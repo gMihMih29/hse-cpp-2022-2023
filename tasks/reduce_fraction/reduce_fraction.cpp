@@ -1,10 +1,12 @@
 #include "reduce_fraction.h"
 
 int64_t GreatestCommonDivisor(int64_t a, int64_t b) {
-    if (a < 0)
+    if (a < 0) {
         a = -a;
-    if (b < 0)
+    }
+    if (b < 0) {
         b = -b;
+    }
     while (a > 0 && b > 0) {
         if (a > b) {
             a %= b;
