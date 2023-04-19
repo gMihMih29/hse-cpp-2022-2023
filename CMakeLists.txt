@@ -24,3 +24,13 @@ add_subdirectory(tasks/min_divisor)
 add_subdirectory(tasks/sum_digits)
 add_subdirectory(tasks/fibonacci)
 add_subdirectory(tasks/reduce_fraction)
+
+
+#2
+add_subdirectory(tasks/const_diagonal)
+add_subdirectory(tasks/variable_diagonal)
+add_subdirectory(tasks/palindrome)
+add_subdirectory(tasks/password)
+add_subdirectory(tasks/range)
+add_subdirectory(tasks/factorization)
+add_subdirectory(tasks/sort_students)

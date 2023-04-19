@@ -2,12 +2,11 @@
 
 Общая формула оценки:
 
-![encoding](https://latex.codecogs.com/svg.image?0.1(T_%7B1%7D&plus;T_%7B2%7D)&plus;0.25H&plus;0.25P&plus;0.2E&plus;0.1S)
+![encoding](https://latex.codecogs.com/svg.image?&space;0.3&space;\cdot&space;HW&space;&plus;&space;0.15&space;\cdot&space;HW_1&space;&plus;&space;0.15&space;\cdot&space;HW_2&space;&plus;&space;0.3&space;\cdot&space;E&space;&plus;&space;0.1&space;\cdot&space;S)
 
 где
-- ![encoding](https://latex.codecogs.com/svg.image?T_{1,2}) - оценки за контрольные работы
-- ![encoding](https://latex.codecogs.com/svg.image?H) - оценка за домашние задания
-- ![encoding](https://latex.codecogs.com/svg.image?P) - оценка за проект
+- ![encoding](https://latex.codecogs.com/svg.image?HW_{1,2}) - оценки за большие домашние задания
+- ![encoding](https://latex.codecogs.com/svg.image?HW) - средняя оценка за каждое еженедельное задание
 - ![encoding](https://latex.codecogs.com/svg.image?E) - оценка за экзамен
 - ![encoding](https://latex.codecogs.com/svg.image?S) - оценка за работу на семинаре
 
@@ -26,11 +25,6 @@
 
   ![encoding](https://latex.codecogs.com/svg.image?\frac{Sum_{week}}{Max}&space;\times&space;10), где ![encoding](https://latex.codecogs.com/svg.image?Sum_{week}) - число набранных студентом баллов за недельное ДЗ, ![encoding](https://latex.codecogs.com/svg.image?Max) - максимально возможное число баллов за задачи недели
   
-Итоговый балл за ДЗ ![encoding](https://latex.codecogs.com/svg.image?H) является средней оценкой за недельные ДЗ и вычисляется по формуле:
+Итоговый балл за ДЗ ![encoding](https://latex.codecogs.com/svg.image?HW) является средней оценкой за недельные ДЗ и вычисляется по формуле:
 
   ![encoding](https://latex.codecogs.com/svg.image?\frac{Sum_{total}}{Weeks}), где ![encoding](https://latex.codecogs.com/svg.image?Sum_{total}) - сумма оценок за все недельные ДЗ, ![encoding](https://latex.codecogs.com/svg.image?Weeks) - количество выданных недельных ДЗ
-
-## Проект
-
-Правила начисления оценки за проект будут объявлены при публикации проекта.
-
