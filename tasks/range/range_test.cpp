@@ -1,7 +1,6 @@
-#include <catch.hpp>
-
 #include "range.h"
 
+#include <catch.hpp>
 #include <vector>
 
 TEST_CASE("Simple") {
