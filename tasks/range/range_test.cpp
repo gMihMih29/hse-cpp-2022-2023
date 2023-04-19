@@ -3,6 +3,7 @@
 #include <catch.hpp>
 #include <vector>
 
+// NOLINTBEGIN
 TEST_CASE("Simple") {
     {
         std::vector<int> expected{2, 3, 4};
@@ -45,3 +46,4 @@ TEST_CASE("EmptyInf") {
     REQUIRE(Range(5, -5, 2).empty());
     REQUIRE(Range(3, -7, 0).empty());
 }
+// NOLINTEND
