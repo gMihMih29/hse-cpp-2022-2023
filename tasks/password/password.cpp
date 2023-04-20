@@ -2,7 +2,7 @@
 
 const int MIN_PASSWORD_LENGTH = 8;
 const int MAX_PASSWORD_LENGTH = 14;
-const int MIN_CHAR = 32;
+const int MIN_CHAR = 33;
 const int MAX_CHAR = 126;
 
 bool ValidatePassword(const std::string& password) {
