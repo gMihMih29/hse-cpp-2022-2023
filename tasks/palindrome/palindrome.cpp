@@ -9,17 +9,17 @@ bool IsPalindrome(const std::string& str) {
         while (str[l] == ' ' && l != str.length() - 1) {
             ++l;
         }
-        while (str[r] == ' ' && r != 0) {
+        while (str[r] == ' ' && r != 1) {
             --r;
         }
-        if (l >= r) {
+        if (l >= r || l >= str.length() / 2 || r < str.length() / 2) {
             break;
         }
         if (str[l] != str[r]) {
             return false;
         }
-        l = std::min(l + 1, str.length());
-        r = std::max(r - 1, static_cast<size_t>(0));
+        ++l;
+        --r;
     }
     return true;
 }
