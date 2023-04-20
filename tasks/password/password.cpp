@@ -1,11 +1,16 @@
 #include "password.h"
 
+const int MIN_PASSWORD_LENGTH = 8;
+const int MAX_PASSWORD_LENGTH = 14;
+const int MIN_CHAR = 32;
+const int MAX_CHAR = 126;
+
 bool ValidatePassword(const std::string& password) {
-    if (8 > password.length() || password.length() > 14) {
+    if (MIN_PASSWORD_LENGTH > password.length() || password.length() > MAX_PASSWORD_LENGTH) {
         return false;
     }
     for (const char& i : password) {
-        if (i < 32 || 126 < i) {
+        if (i < MIN_CHAR || MAX_CHAR < i) {
             return false;
         }
     }
