@@ -25,7 +25,7 @@ bool ValidatePassword(const std::string& password) {
             has_upper = true;
         } else if (islower(i)) {
             has_lower = true;
-        } else if (i != ' '){
+        } else if (i != ' ') {
             has_other_symbols = true;
         }
     }
