@@ -3,6 +3,9 @@
 #include <algorithm>
 
 bool IsPalindrome(const std::string& str) {
+    if (str.length() == 0) {
+        return true;
+    }
     size_t l = 0;
     size_t r = str.length() - 1;
     while (l < r) {
@@ -12,7 +15,7 @@ bool IsPalindrome(const std::string& str) {
         while (str[r] == ' ' && r != 0) {
             --r;
         }
-        if (l >= r || l >= str.length() / 2 || r < str.length() / 2) {
+        if (l >= r) {
             break;
         }
         if (str[l] != str[r]) {
