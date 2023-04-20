@@ -1,5 +1,7 @@
 #include "palindrome.h"
 
+#include <algorithm>
+
 bool IsPalindrome(const std::string& str) {
     size_t l = 0;
     size_t r = str.length() - 1;
@@ -16,8 +18,8 @@ bool IsPalindrome(const std::string& str) {
         if (str[l] != str[r]) {
             return false;
         }
-        ++l;
-        --r;
+        l = std::min(l + 1, str.length());
+        r = std::max(r - 1, static_cast<size_t>(0));
     }
     return true;
 }
