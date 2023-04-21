@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 
 struct Date {
     int day = 0;
@@ -16,10 +16,6 @@ struct Student {
     Date birth_date;
 };
 
-enum class SortKind {
-    Name,
-    Date
-};
+enum class SortKind { Name, Date };
 
 void SortStudents(std::vector<Student>& students, SortKind sortKind);
-
