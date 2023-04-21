@@ -7,7 +7,7 @@ struct Date {
     int day = 0;
     int month = 0;
     int year = 0;
-    int CompareTo(const Date& d);
+    static int Compare(const Date& d1, const Date& d2);
 };
 
 struct Student {

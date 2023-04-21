@@ -2,27 +2,27 @@
 
 #include <algorithm>
 
-int Date::CompareTo(const Date& d) {
-    if (year < d.year) {
+int Date::Compare(const Date& d1, const Date& d2) {
+    if (d1.year < d2.year) {
         return 1;
-    } else if (year > d.year) {
+    } else if (d1.year > d2.year) {
         return -1;
     }
-    if (month < d.month) {
+    if (d1.month < d2.month) {
         return 1;
-    } else if (month > d.month) {
+    } else if (d1.month > d2.month) {
         return -1;
     }
-    if (day < d.day) {
+    if (d1.day < d2.day) {
         return 1;
-    } else if (day > d.day) {
+    } else if (d1.day > d2.day) {
         return -1;
     }
     return 0;
 }
 
 bool CmpDate(Student s1, Student s2) {
-    int cmp_result = s1.birth_date.CompareTo(s2.birth_date);
+    int cmp_result = Date::Compare(s1.birth_date, s2.birth_date);
     if (cmp_result != 0) {
         return cmp_result > 0;
     }
@@ -33,7 +33,7 @@ bool CmpName(Student s1, Student s2) {
     if (s1.last_name + s1.name != s2.last_name + s2.name) {
         return s1.last_name + s1.name < s2.last_name + s2.name;
     }
-    int cmp_result = s1.birth_date.CompareTo(s2.birth_date);
+    int cmp_result = Date::Compare(s1.birth_date, s2.birth_date);;
     return cmp_result > 0;
 }
 
