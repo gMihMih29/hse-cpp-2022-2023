@@ -3,7 +3,7 @@
 #include <algorithm>
 
 bool IsPalindrome(const std::string& str) {
-    if (str.length() == 0) {
+    if (str.empty()) {
         return true;
     }
     size_t l = 0;
