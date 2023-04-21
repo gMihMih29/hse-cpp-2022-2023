@@ -26,12 +26,21 @@ bool CmpDate(Student s1, Student s2) {
     if (cmp_result != 0) {
         return cmp_result > 0;
     }
-    return s1.last_name + s1.name < s2.last_name + s2.name;
+    if (s1.last_name < s2.last_name) {
+        return true;
+    } else if (s1.last_name > s2.last_name) {
+        return false;
+    }
+    return s1.name < s2.name;
 }
 
 bool CmpName(Student s1, Student s2) {
-    if (s1.last_name + s1.name != s2.last_name + s2.name) {
-        return s1.last_name + s1.name < s2.last_name + s2.name;
+    if (s1.last_name != s2.last_name || s1.name != s2.name) {
+        if (s1.last_name < s2.last_name) {
+            return true;
+        } else if (s1.last_name > s2.last_name) {
+            return false;
+        }
     }
     int cmp_result = Date::Compare(s1.birth_date, s2.birth_date);
     return cmp_result > 0;
