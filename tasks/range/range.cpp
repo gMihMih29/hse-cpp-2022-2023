@@ -7,11 +7,11 @@ std::vector<int> Range(int from, int to, int step) {
     std::vector<int> result;
     result.reserve(std::abs(to - from) / std::abs(step));
     if (step > 0) {
-        for (;from < to; from += std::abs(step)) {
+        for (; from < to; from += std::abs(step)) {
             result.push_back(from);
         }
     } else {
-        for (;from > to; from += step) {
+        for (; from > to; from += step) {
             result.push_back(from);
         }
     }
