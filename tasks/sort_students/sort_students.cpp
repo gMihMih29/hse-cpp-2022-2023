@@ -33,7 +33,7 @@ bool CmpName(Student s1, Student s2) {
     if (s1.last_name + s1.name != s2.last_name + s2.name) {
         return s1.last_name + s1.name < s2.last_name + s2.name;
     }
-    int cmp_result = Date::Compare(s1.birth_date, s2.birth_date);;
+    int cmp_result = Date::Compare(s1.birth_date, s2.birth_date);
     return cmp_result > 0;
 }
 
