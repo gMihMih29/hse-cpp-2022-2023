@@ -7,7 +7,7 @@ struct Date {
     int day = 0;
     int month = 0;
     int year = 0;
-    int CompareTo(Date d);
+    int CompareTo(const Date& d);
 };
 
 struct Student {
@@ -18,4 +18,4 @@ struct Student {
 
 enum class SortKind { Name, Date };
 
-void SortStudents(std::vector<Student>& students, SortKind sortKind);
+void SortStudents(std::vector<Student>& students, SortKind sort_kind);

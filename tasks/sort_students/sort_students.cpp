@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-int Date::CompareTo(Date d) {
+int Date::CompareTo(const Date& d) {
     if (year < d.year) {
         return 1;
     } else if (year > d.year) {
@@ -37,8 +37,8 @@ bool CmpName(Student s1, Student s2) {
     return cmp_result > 0;
 }
 
-void SortStudents(std::vector<Student>& students, SortKind sortKind) {
-    if (sortKind == SortKind::Date) {
+void SortStudents(std::vector<Student>& students, SortKind sort_kind) {
+    if (sort_kind == SortKind::Date) {
         std::sort(students.begin(), students.end(), CmpDate);
     } else {
         std::sort(students.begin(), students.end(), CmpName);
