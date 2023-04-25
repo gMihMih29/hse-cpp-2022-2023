@@ -1,6 +1,6 @@
 #include "caesar_cipher.h"
 
-const int ALPHABET_LENGTH = 'Z' - 'A' + 1;
+const size_t ALPHABET_LENGTH = 'Z' - 'A' + 1;
 
 std::string Decipher(const std::string& cipher, size_t shift) {
     std::string result = cipher;
@@ -10,7 +10,7 @@ std::string Decipher(const std::string& cipher, size_t shift) {
         symbol_number = cipher[i] - 'A';
         symbol_number += ALPHABET_LENGTH - shift;
         symbol_number %= ALPHABET_LENGTH;
-        result[i] = symbol_number + 'A';
+        result[i] = static_cast<char>(symbol_number) + 'A';
     }
     return result;
 }
