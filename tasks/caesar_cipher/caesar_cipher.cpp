@@ -4,7 +4,7 @@ const size_t ALPHABET_LENGTH = 'Z' - 'A' + 1;
 
 std::string Decipher(const std::string& cipher, size_t shift) {
     std::string result = cipher;
-    int symbol_number;
+    size_t symbol_number;
     shift %= ALPHABET_LENGTH;
     for (size_t i = 0; i < cipher.length(); ++i) {
         symbol_number = cipher[i] - 'A';
