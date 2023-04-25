@@ -1,3 +1,16 @@
+- group: 03-homework-three
+  start: 25-04-2023 16:00
+  deadline: 13-05-2023 23:59
+  tasks:
+    - task: caesar_cipher
+      score: 100
+    - task: find_last
+      score: 100
+    - task: sort
+      score: 100
+    - task: stack
+      score: 200
+
 - group: 02-homework-two
   start: 19-04-2023 16:00
   deadline: 29-04-2023 23:59

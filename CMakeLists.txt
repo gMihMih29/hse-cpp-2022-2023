@@ -34,3 +34,10 @@ add_subdirectory(tasks/password)
 add_subdirectory(tasks/range)
 add_subdirectory(tasks/factorization)
 add_subdirectory(tasks/sort_students)
+
+
+#3
+add_subdirectory(tasks/caesar_cipher)
+add_subdirectory(tasks/sort)
+add_subdirectory(tasks/stack)
+add_subdirectory(tasks/find_last)
