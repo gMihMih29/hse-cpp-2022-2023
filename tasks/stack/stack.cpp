@@ -16,10 +16,6 @@ Stack::~Stack() {
 
 void Stack::Push(int32_t value) {
     ++size_;
-    if (head_ == nullptr) {
-        head_ = new Node(value, nullptr);
-        return;
-    }
     head_ = new Node(value, head_);
 }
 
