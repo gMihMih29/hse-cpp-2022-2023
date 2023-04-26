@@ -2,13 +2,13 @@
 
 template <class Iterator, class Comparator = std::less<typename std::iterator_traits<Iterator>::value_type>>
 void Sort(Iterator begin, Iterator end, Comparator comparator = Comparator()) {
-    if (end - begin == 1) {
+    if (end - begin == 1 || end <= begin) {
         return;
     }
     Iterator bigger_beginning = begin;
     Iterator equals_beginning = begin;
     for (Iterator i = begin; i < end; ++i) {
-        if (!(*i < *equals_beginning || *equals_beginning < *i)) {
+        if (!(comparator(*equals_beginning, *i) || comparator(*i, *equals_beginning))) {
             std::swap(*bigger_beginning, *i);
             ++bigger_beginning;
         } else if (!comparator(*equals_beginning, *i)) {
