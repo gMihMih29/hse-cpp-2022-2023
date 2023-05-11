@@ -41,3 +41,10 @@ add_subdirectory(tasks/caesar_cipher)
 add_subdirectory(tasks/sort)
 add_subdirectory(tasks/stack)
 add_subdirectory(tasks/find_last)
+
+
+#4
+add_subdirectory(tasks/is_sorted_until)
+add_subdirectory(tasks/remove)
+add_subdirectory(tasks/rational)
+add_subdirectory(tasks/array)

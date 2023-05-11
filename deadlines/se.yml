@@ -1,6 +1,20 @@
+- group: 04-homework-four
+  start: 11-05-2023 11:00
+  deadline: 23-05-2023 23:59
+  tasks:
+    - task: is_sorted_until
+      score: 100
+    - task: remove
+      score: 100
+    - task: rational
+      score: 200
+    - task: array
+      score: 200
+
+
 - group: 03-homework-three
   start: 25-04-2023 16:00
-  deadline: 13-05-2023 23:59
+  deadline: 16-05-2023 23:59
   tasks:
     - task: caesar_cipher
       score: 100
