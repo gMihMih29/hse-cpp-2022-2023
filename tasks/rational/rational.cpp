@@ -1,7 +1,5 @@
 #include <rational.h>
 
-#include <numeric>
-
 Rational::Rational() : numer_(0), denom_(1) {
 }
 
@@ -29,6 +27,9 @@ void Rational::SetNumerator(int value) {
 }
 
 void Rational::SetDenominator(int value) {
+    if (value == 0) {
+        throw RationalDivisionByZero();
+    }
     int gcd = std::gcd(std::abs(numer_), std::abs(value));
     numer_ = numer_ / gcd * (value > 0 ? 1 : -1);
     denom_ = std::abs(value) / gcd;
@@ -78,6 +79,9 @@ Rational& operator-=(Rational& lhs, const Rational& rhs) {
 }
 
 Rational& operator/=(Rational& lhs, const Rational& rhs) {
+    if (rhs == 0) {
+        throw RationalDivisionByZero();
+    }
     return lhs *= Rational(rhs.GetDenominator(), rhs.GetNumerator());
 }
 
@@ -103,6 +107,9 @@ Rational operator*(const Rational& lhs, const Rational& rhs) {
 }
 
 Rational operator/(const Rational& lhs, const Rational& rhs) {
+    if (rhs == 0) {
+        throw RationalDivisionByZero();
+    }
     int top = lhs.GetNumerator() * rhs.GetDenominator();
     int bottom = lhs.GetDenominator() * rhs.GetNumerator();
     int gcd = std::gcd(std::abs(top), std::abs(bottom));
