@@ -60,10 +60,31 @@ Rational& operator--(Rational& ratio) {
 }
 
 std::istream& operator>>(std::istream& is, Rational& ratio) {
+    std::string input;
+    is >> input;
     int top = 0;
     int bottom = 1;
-    is >> top >> bottom;
-    ratio = Rational(top, bottom);
+    bool is_top = true;
+    bool is_negative = false;
+    for (const char& i : input) {
+        if (i == '/') {
+            is_top = false;
+            continue;
+        }
+        if (i == '+') {
+            continue;
+        }
+        if (i == '-') {
+            is_negative = !is_negative;
+            continue;
+        }
+        if (is_top) {
+            top += top * 10 + (i - '0');
+        } else {
+            bottom += bottom * 10 + (i - '0');
+        }
+    }
+    ratio = Rational(top * (is_negative ? -1 : 1), bottom);
     return is;
 }
 
