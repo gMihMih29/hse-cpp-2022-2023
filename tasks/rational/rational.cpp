@@ -60,7 +60,8 @@ Rational& operator--(Rational& ratio) {
 }
 
 std::istream& operator>>(std::istream& is, Rational& ratio) {
-    int top, bottom;
+    int top = 0;
+    int bottom = 1;
     is >> top >> bottom;
     ratio = Rational(top, bottom);
     return is;
