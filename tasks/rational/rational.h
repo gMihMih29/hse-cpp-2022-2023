@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdexcept>
 #include <iostream>
 #include <numeric>
+#include <stdexcept>
 
 class RationalDivisionByZero : public std::runtime_error {
 public:
