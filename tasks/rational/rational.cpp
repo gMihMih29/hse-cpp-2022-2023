@@ -60,6 +60,7 @@ Rational& operator--(Rational& ratio) {
 }
 
 std::istream& operator>>(std::istream& is, Rational& ratio) {
+    const int base = 10;
     std::string input;
     is >> input;
     int top = 0;
@@ -79,9 +80,9 @@ std::istream& operator>>(std::istream& is, Rational& ratio) {
             continue;
         }
         if (is_top) {
-            top += top * 10 + (i - '0');
+            top += top * base + (i - '0');
         } else {
-            bottom += bottom * 10 + (i - '0');
+            bottom += bottom * base + (i - '0');
         }
     }
     ratio = Rational(top * (is_negative ? -1 : 1), bottom);
