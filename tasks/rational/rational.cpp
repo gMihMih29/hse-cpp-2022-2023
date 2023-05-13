@@ -3,7 +3,7 @@
 Rational::Rational() : numer_(0), denom_(1) {
 }
 
-Rational::Rational(int value) : numer_(value), denom_(1) {
+Rational::Rational(int value) : numer_(value), denom_(1) {  // NOLINT
 }
 
 Rational::Rational(int numer, int denom) {
