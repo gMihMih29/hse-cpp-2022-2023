@@ -154,6 +154,6 @@ bool operator!=(const Rational& lhs, const Rational& rhs) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Rational& ratio) {
-    os << ratio.GetNumerator() << " " << ratio.GetDenominator();
+    os << ratio.GetNumerator() << "/" << ratio.GetDenominator();
     return os;
 }
