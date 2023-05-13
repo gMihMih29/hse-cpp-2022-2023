@@ -5,7 +5,9 @@ T Remove(T begin, T end, U value) {
     T values_to_remove_iter = begin;
     for (; begin < end; ++begin) {
         if (*begin != value) {
-            std::swap(*values_to_remove_iter, *begin);
+            auto temp = *values_to_remove_iter;
+            *values_to_remove_iter = *begin;
+            *begin = temp;
             ++values_to_remove_iter;
         }
     }
