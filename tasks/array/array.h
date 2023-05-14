@@ -15,7 +15,7 @@ public:
         data_ = nullptr;
     }
 
-    Array(size_t size) {
+    explicit Array(size_t size) {
         size_ = size;
         data_ = new T[size_];
     }
@@ -65,7 +65,7 @@ public:
 
     class Iterator {
     public:
-        Iterator(T* current) : current_(current) {
+        explicit Iterator(T* current) : current_(current) {
         }
 
         Iterator& operator++() {
