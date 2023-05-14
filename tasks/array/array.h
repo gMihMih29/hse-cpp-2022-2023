@@ -59,7 +59,7 @@ public:
         return *(data_ + index);
     }
 
-    size_t size() const { // NOLINT
+    size_t size() const {  // NOLINT
         return size_;
     }
 
@@ -85,11 +85,11 @@ public:
         T* current_;
     };
 
-    Iterator begin() const { // NOLINT
+    Iterator begin() const {  // NOLINT
         return Iterator(data_);
     }
 
-    Iterator end() const { // NOLINT
+    Iterator end() const {  // NOLINT
         return Iterator(data_ + size_);
     }
 };
