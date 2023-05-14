@@ -39,6 +39,7 @@ public:
     }
 
     Array& operator=(const Array& other) {
+        delete[] data_;
         size_ = other.size_;
         data_ = new T[size_];
         for (size_t i = 0; i < size_; ++i) {
