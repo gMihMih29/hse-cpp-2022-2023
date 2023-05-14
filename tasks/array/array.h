@@ -26,6 +26,7 @@ public:
         size_t current_index = 0;
         for (const auto& i : list) {
             data_[current_index] = i;
+            ++current_index;
         }
     }
 
