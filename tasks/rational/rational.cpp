@@ -103,26 +103,26 @@ Rational& operator/=(Rational& lhs, const Rational& rhs) {
 }
 
 Rational operator+(const Rational& lhs, const Rational& rhs) {
-    int64_t top = lhs.GetNumerator() * rhs.GetDenominator() + rhs.GetNumerator() * lhs.GetDenominator();
-    int64_t bottom = lhs.GetDenominator() * rhs.GetDenominator();
+    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetDenominator() + rhs.GetNumerator() * lhs.GetDenominator());
+    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetDenominator());
     return Rational(top, bottom);
 }
 
 Rational operator-(const Rational& lhs, const Rational& rhs) {
-    int64_t top = lhs.GetNumerator() * rhs.GetDenominator() - rhs.GetNumerator() * lhs.GetDenominator();
-    int64_t bottom = lhs.GetDenominator() * rhs.GetDenominator();
+    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetDenominator() - rhs.GetNumerator() * lhs.GetDenominator());
+    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetDenominator());
     return Rational(top, bottom);
 }
 
 Rational operator*(const Rational& lhs, const Rational& rhs) {
-    int64_t top = lhs.GetNumerator() * rhs.GetNumerator();
-    int64_t bottom = lhs.GetDenominator() * rhs.GetDenominator();
+    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetNumerator());
+    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetDenominator());
     return Rational(top, bottom);
 }
 
 Rational operator/(const Rational& lhs, const Rational& rhs) {
-    int64_t top = lhs.GetNumerator() * rhs.GetDenominator();
-    int64_t bottom = lhs.GetDenominator() * rhs.GetNumerator();
+    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetDenominator());
+    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetNumerator());
     return Rational(top, bottom);
 }
 
