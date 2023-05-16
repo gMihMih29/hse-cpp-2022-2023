@@ -48,3 +48,12 @@ add_subdirectory(tasks/is_sorted_until)
 add_subdirectory(tasks/remove)
 add_subdirectory(tasks/rational)
 add_subdirectory(tasks/array)
+
+
+#5
+add_subdirectory(tasks/tests_checking)
+add_subdirectory(tasks/word2vec)
+add_subdirectory(tasks/admission)
+add_subdirectory(tasks/scorer)
+add_subdirectory(tasks/provinces)
+add_subdirectory(tasks/unixpath)

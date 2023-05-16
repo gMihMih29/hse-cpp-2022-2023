@@ -1,3 +1,21 @@
+- group 05-homework-five
+  start: 16-05-2023 11:00
+  deadline: 28-05-2023 23:59
+  tasks:
+    - task: tests_checking
+      score: 100
+    - task: word2vec
+      score: 100
+    - task: admission
+      score: 100
+    - task: scorer
+      score: 100
+    - task: unixpath
+      score: 150
+    - task: provinces
+      score: 150
+
+
 - group: 04-homework-four
   start: 11-05-2023 11:00
   deadline: 23-05-2023 23:59
