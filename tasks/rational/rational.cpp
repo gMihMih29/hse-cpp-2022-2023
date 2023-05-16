@@ -39,21 +39,23 @@ void Rational::SetDenominator(int value) {
 }
 
 Rational& operator+=(Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetDenominator() +
-                               static_cast<int64_t>(rhs.GetNumerator()) * lhs.GetDenominator());
-    int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
+    int64_t top = static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetDenominator() +
+              static_cast<int64_t>(rhs.GetNumerator()) * lhs.GetDenominator();
+    int64_t bottom = static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator();
+    int64_t gcd = std::gcd(top, bottom);
     lhs.SetDenominator(1);
-    lhs.SetNumerator(top);
-    lhs.SetDenominator(bottom);
+    lhs.SetNumerator(static_cast<int>(top / gcd));
+    lhs.SetDenominator(static_cast<int>(bottom / gcd));
     return lhs;
 }
 
 Rational& operator*=(Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetNumerator());
-    int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
+    int64_t top = static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetNumerator();
+    int64_t bottom = static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator();
+    int64_t gcd = std::gcd(top, bottom);
     lhs.SetDenominator(1);
-    lhs.SetNumerator(top);
-    lhs.SetDenominator(bottom);
+    lhs.SetNumerator(static_cast<int>(top / gcd));
+    lhs.SetDenominator(static_cast<int>(bottom / gcd));
     return lhs;
 }
 
