@@ -39,7 +39,7 @@ void Rational::SetDenominator(int value) {
 }
 
 Rational& operator+=(Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetDenominator() + 
+    int top = static_cast<int>(static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetDenominator() +
                                static_cast<int64_t>(rhs.GetNumerator()) * lhs.GetDenominator());
     int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
     lhs.SetDenominator(1);
