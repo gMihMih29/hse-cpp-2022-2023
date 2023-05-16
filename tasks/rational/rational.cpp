@@ -44,7 +44,7 @@ Rational& operator+=(Rational& lhs, const Rational& rhs) {
     int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
     lhs.SetDenominator(1);
     lhs.SetNumerator(top);
-    lhs.SetNumerator(bottom);
+    lhs.SetDenominator(bottom);
     return lhs;
 }
 
@@ -53,7 +53,7 @@ Rational& operator*=(Rational& lhs, const Rational& rhs) {
     int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
     lhs.SetDenominator(1);
     lhs.SetNumerator(top);
-    lhs.SetNumerator(bottom);
+    lhs.SetDenominator(bottom);
     return lhs;
 }
 
