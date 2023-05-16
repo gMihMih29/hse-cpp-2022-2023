@@ -40,7 +40,7 @@ void Rational::SetDenominator(int value) {
 
 Rational& operator+=(Rational& lhs, const Rational& rhs) {
     int64_t top = static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetDenominator() +
-              static_cast<int64_t>(rhs.GetNumerator()) * lhs.GetDenominator();
+                  static_cast<int64_t>(rhs.GetNumerator()) * lhs.GetDenominator();
     int64_t bottom = static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator();
     int64_t gcd = std::gcd(top, bottom);
     lhs.SetDenominator(1);
