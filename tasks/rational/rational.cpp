@@ -1,6 +1,7 @@
 #include "rational.h"
 
 #include <cmath>
+#include <string>
 
 Rational::Rational() : numer_(0), denom_(1) {
 }
@@ -10,8 +11,8 @@ Rational::Rational(int value) : numer_(value), denom_(1) {  // NOLINT
 
 Rational::Rational(int numer, int denom) {
     denom_ = 1;
-    this->SetNumerator(numer);
-    this->SetDenominator(denom);
+    SetNumerator(numer);
+    SetDenominator(denom);
 }
 
 int Rational::GetNumerator() const {
@@ -38,19 +39,31 @@ void Rational::SetDenominator(int value) {
 }
 
 Rational& operator+=(Rational& lhs, const Rational& rhs) {
-    return lhs = lhs + rhs;
+    int top = static_cast<int>(static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetDenominator() + static_cast<int64_t>(rhs.GetNumerator()) * lhs.GetDenominator());
+    int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
+    lhs.SetDenominator(1);
+    lhs.SetNumerator(top);
+    lhs.SetNumerator(bottom);
+    return lhs;
 }
 
 Rational& operator*=(Rational& lhs, const Rational& rhs) {
-    return lhs = lhs * rhs;
+    int top = static_cast<int>(static_cast<int64_t>(lhs.GetNumerator()) * rhs.GetNumerator());
+    int bottom = static_cast<int>(static_cast<int64_t>(lhs.GetDenominator()) * rhs.GetDenominator());
+    lhs.SetDenominator(1);
+    lhs.SetNumerator(top);
+    lhs.SetNumerator(bottom);
+    return lhs;
 }
 
 Rational& operator++(Rational& ratio) {
-    return ratio = Rational(ratio.numer_ + ratio.denom_, ratio.denom_);
+    ratio.SetNumerator(ratio.numer_ + ratio.denom_);
+    return ratio;
 }
 
 Rational& operator--(Rational& ratio) {
-    return ratio = Rational(ratio.numer_ - ratio.denom_, ratio.denom_);
+    ratio.SetNumerator(ratio.numer_ - ratio.denom_);
+    return ratio;
 }
 
 std::istream& operator>>(std::istream& is, Rational& ratio) {
@@ -82,7 +95,9 @@ std::istream& operator>>(std::istream& is, Rational& ratio) {
     if (is_top) {
         bottom = 1;
     }
-    ratio = Rational(top * (is_negative ? -1 : 1), bottom);
+    ratio.SetDenominator(1);
+    ratio.SetNumerator(top * (is_negative ? -1 : 1));
+    ratio.SetDenominator(bottom);
     return is;
 }
 
@@ -103,27 +118,23 @@ Rational& operator/=(Rational& lhs, const Rational& rhs) {
 }
 
 Rational operator+(const Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetDenominator() + rhs.GetNumerator() * lhs.GetDenominator());
-    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetDenominator());
-    return Rational(top, bottom);
+    Rational lhs_copy = lhs;
+    return lhs_copy += rhs;
 }
 
 Rational operator-(const Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetDenominator() - rhs.GetNumerator() * lhs.GetDenominator());
-    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetDenominator());
-    return Rational(top, bottom);
+    Rational lhs_copy = lhs;
+    return lhs_copy -= rhs;
 }
 
 Rational operator*(const Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetNumerator());
-    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetDenominator());
-    return Rational(top, bottom);
+    Rational lhs_copy = lhs;
+    return lhs_copy *= rhs;
 }
 
 Rational operator/(const Rational& lhs, const Rational& rhs) {
-    int top = static_cast<int>(lhs.GetNumerator() * rhs.GetDenominator());
-    int bottom = static_cast<int>(lhs.GetDenominator() * rhs.GetNumerator());
-    return Rational(top, bottom);
+    Rational lhs_copy = lhs;
+    return lhs_copy /= rhs;
 }
 
 Rational operator++(Rational& ratio, int) {
@@ -139,10 +150,7 @@ Rational operator--(Rational& ratio, int) {
 }
 
 bool operator<(const Rational& lhs, const Rational& rhs) {
-    if (rhs == 0) {
-        return lhs.GetNumerator() < 0;
-    }
-    return (lhs - rhs) < 0;
+    return (lhs - rhs).GetNumerator() < 0;
 }
 
 bool operator>(const Rational& lhs, const Rational& rhs) {
@@ -169,5 +177,5 @@ std::ostream& operator<<(std::ostream& os, const Rational& ratio) {
     if (ratio.GetDenominator() == 1) {
         return os << ratio.GetNumerator();
     }
-    return os << ratio.GetNumerator() << "/" << ratio.GetDenominator();
+    return os << ratio.GetNumerator() << '/' << ratio.GetDenominator();
 }
