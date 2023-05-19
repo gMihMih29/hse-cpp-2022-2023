@@ -7,6 +7,9 @@ const double EPS = 1e-9;
 
 std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
                                           const std::vector<std::vector<int>>& vectors) {
+    if (vectors.empty()) {
+        return std::vector<std::string>();
+    }
     size_t dimensions = vectors[0].size();
     double current_result = 0;
     std::vector<double> self_scalar_prods;
@@ -42,7 +45,7 @@ std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
     }
     std::vector<std::string> answer;
     answer.reserve(count_max);
-    for (size_t i = 0; i < vectors.size(); ++i) {
+    for (size_t i = 1; i < vectors.size(); ++i) {
         current_result = first_scalar_prods[i] / (std::sqrt(self_scalar_prods[i]) * std::sqrt(self_scalar_prods[0]));
         if (std::abs(max - current_result) < EPS) {
             answer.push_back(words[i]);
