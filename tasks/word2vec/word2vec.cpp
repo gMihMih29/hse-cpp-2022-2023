@@ -7,7 +7,7 @@ const double EPS = 1e-9;
 
 std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
                                           const std::vector<std::vector<int>>& vectors) {
-    if (vectors.size() == 0) {
+    if (vectors.empty()) {
         return {};
     }
     size_t dimensions = vectors[0].size();
