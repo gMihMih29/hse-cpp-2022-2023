@@ -4,7 +4,7 @@
 
 std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
                                           const std::vector<std::vector<int>>& vectors) {
-    int dimensions = vectors[0].size();
+    size_t dimensions = vectors[0].size();
     int max = 0;
     int count_max = 0;
     int current_result = 0;
