@@ -13,14 +13,14 @@ std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
     std::vector<double> first_scalar_prods;
     self_scalar_prods.reserve(vectors.size());
     first_scalar_prods.reserve(vectors.size());
-    for (size_t i = 1; i < vectors.size(); ++i) {
+    for (size_t i = 0; i < vectors.size(); ++i) {
         current_result = 0;
         for (size_t j = 0; j < dimensions; ++j) {
             current_result += vectors[i][j] * vectors[i][j];
         }
         self_scalar_prods.push_back(current_result);
     }
-    for (size_t i = 1; i < vectors.size(); ++i) {
+    for (size_t i = 0; i < vectors.size(); ++i) {
         current_result = 0;
         for (size_t j = 0; j < dimensions; ++j) {
             current_result += vectors[i][j] * vectors[0][j];
