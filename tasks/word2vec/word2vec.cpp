@@ -1,7 +1,7 @@
 #include "word2vec.h"
 
-#include <vector>
 #include <cmath>
+#include <vector>
 
 const double EPS = 1e-9;
 
