@@ -9,7 +9,7 @@ std::vector<std::string> StudentsOrder(const std::vector<StudentAction>& student
         } else {
             papers.push_back(i.name);
         }
-    } 
+    }
     std::vector<std::string> answer;
     answer.reserve(queries.size());
     for (const auto& i : queries) {
