@@ -19,5 +19,10 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
         }
         answer[e.student_name].erase(e.task_name);
     }
+    for (const auto& kv : answer) {
+        if (answer[kv.first].empty()) {
+            answer.erase(kv.first);
+        }
+    }
     return answer;
 }
