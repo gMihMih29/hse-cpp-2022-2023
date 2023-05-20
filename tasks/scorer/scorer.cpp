@@ -19,10 +19,14 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
         }
         answer[e.student_name].erase(e.task_name);
     }
+    std::vector<std::string> keys_to_delete;
     for (const auto& kv : answer) {
         if (answer[kv.first].empty()) {
-            answer.erase(kv.first);
+            keys_to_delete.push_back(kv.first);
         }
+    }
+    for (const auto& key : keys_to_delete) {
+        answer.erase(key);
     }
     return answer;
 }
