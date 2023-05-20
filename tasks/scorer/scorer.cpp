@@ -3,9 +3,8 @@
 ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
     ScoreTable answer;
     Events sorted_events = events;
-    std::sort(sorted_events.begin(), sorted_events.end(), [](const Event& e1, const Event& e2) {
-        return e1.time < e2.time;
-    });
+    std::sort(sorted_events.begin(), sorted_events.end(),
+              [](const Event& e1, const Event& e2) { return e1.time < e2.time; });
     for (const auto& e : events) {
         if (e.time > score_time) {
             break;
