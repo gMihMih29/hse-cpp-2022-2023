@@ -15,7 +15,7 @@ std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
     for (size_t i = 0; i < vectors.size(); ++i) {
         current_result = 0;
         for (size_t j = 0; j < dimensions; ++j) {
-            current_result += vectors[i][j] * vectors[0][j];
+            current_result += static_cast<int64_t>(vectors[i][j]) * vectors[0][j];
         }
         scalar_prods.push_back(current_result);
     }
