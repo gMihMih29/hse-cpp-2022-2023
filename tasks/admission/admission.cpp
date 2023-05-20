@@ -4,7 +4,6 @@
 #include <map>
 
 AdmissionTable FillUniversities(const std::vector<University>& universities, const std::vector<Applicant>& applicants) {
-    std::map<std::string, std::vector<const Student*>> univers_with_students;
     std::vector<const Applicant*> sorted_applicants;
     sorted_applicants.reserve(applicants.size());
     for (const auto& i : applicants) {
@@ -25,35 +24,19 @@ AdmissionTable FillUniversities(const std::vector<University>& universities, con
         }
         return a1->student.name < a2->student.name;
     });
+    AdmissionTable answer;
+    std::map<std::string, size_t> left_places;
     for (const auto& u : universities) {
-        univers_with_students[u.name] = std::vector<const Student*>();
-        univers_with_students[u.name].reserve(u.max_students);
+        left_places[u.name] = u.max_students;
     }
-    for (const auto& i : sorted_applicants) {
-        for (const auto& u : i->wish_list) {
-            if (univers_with_students[u].capacity() != univers_with_students[u].size()) {
-                univers_with_students[u].push_back(&i->student);
+    for (const auto& a : sorted_applicants) {
+        for (const auto& u : a->wish_list) {
+            if (left_places[u] != 0) {
+                answer[u].push_back(&a->student);
+                --left_places[u];
                 break;
             }
         }
-    }
-    for (auto& i : univers_with_students) {
-        std::sort(i.second.begin(), i.second.end(), [](const Student* s1, const Student* s2) {
-            if (s1->name != s2->name) {
-                return s1->name < s2->name;
-            }
-            if (s1->birth_date.year != s2->birth_date.year) {
-                return s1->birth_date.year < s2->birth_date.year;
-            }
-            if (s1->birth_date.month != s2->birth_date.month) {
-                return s1->birth_date.month < s2->birth_date.month;
-            }
-            return s1->birth_date.day < s2->birth_date.day;
-        });
-    }
-    AdmissionTable answer;
-    for (const auto& i : univers_with_students) {
-        answer[i.first] = i.second;
     }
     return answer;
 }
