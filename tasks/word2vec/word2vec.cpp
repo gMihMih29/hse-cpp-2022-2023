@@ -22,7 +22,7 @@ std::vector<std::string> FindClosestWords(const std::vector<std::string>& words,
     int64_t max = 0;
     int count_max = 0;
     bool is_first = true;
-    for (size_t i = 2; i < vectors.size(); ++i) {
+    for (size_t i = 1; i < vectors.size(); ++i) {
         if (max == scalar_prods[i]) {
             ++count_max;
         } else if (max < scalar_prods[i] || is_first) {
