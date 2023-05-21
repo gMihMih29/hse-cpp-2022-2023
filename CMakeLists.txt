@@ -57,3 +57,13 @@ add_subdirectory(tasks/admission)
 add_subdirectory(tasks/scorer)
 add_subdirectory(tasks/provinces)
 add_subdirectory(tasks/unixpath)
+
+
+# homework 1
+add_subdirectory(tasks/copy)
+add_subdirectory(tasks/rotate)
+add_subdirectory(tasks/unique)
+add_subdirectory(tasks/queue)
+add_subdirectory(tasks/string_view)
+add_subdirectory(tasks/string)
+add_subdirectory(tasks/cstring)

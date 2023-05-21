@@ -1,4 +1,24 @@
-- group 05-homework-five
+- group: 01-homework-big-one
+  start: 19-05-2023 11:00
+  deadline: 09-06-2023 23:59
+  tasks:
+    - task: copy
+      score: 50
+    - task: unique
+      score: 50
+    - task: rotate
+      score: 50
+    - task: queue
+      score: 100
+    - task: string_view
+      score: 100
+    - task: string
+      score: 200
+    - task: cstring
+      score: 200
+
+
+- group: 05-homework-five
   start: 16-05-2023 11:00
   deadline: 28-05-2023 23:59
   tasks:
