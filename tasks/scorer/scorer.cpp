@@ -7,7 +7,7 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
               [](const Event& e1, const Event& e2) { return e1.time < e2.time; });
     for (const auto& e : events) {
         if (e.time > score_time) {
-            break;
+            continue;
         }
         if (e.event_type == EventType::CheckSuccess) {
             answer[e.student_name].insert(e.task_name);
