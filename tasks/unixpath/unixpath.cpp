@@ -9,6 +9,8 @@ std::string NormalizePath(std::string_view current_working_dir, std::string_view
     std::string answer;
     if (path[0] != '/') {
         answer = static_cast<std::string>(current_working_dir);
+    } else {
+        return static_cast<std::string>(path);
     }
     while (right_path_index < path.length()) {
         while (right_path_index < path.length() && path[right_path_index] != '/') {
