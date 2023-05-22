@@ -1,3 +1,22 @@
+- group: 05-homework-five
+  start: 21-05-2023 20:00
+  deadline: 04-06-2023 23:59
+  tasks:
+    - task: geometry::vector
+      score: 50
+    - task: geometry::point
+      score: 100
+    - task: geometry::line
+      score: 100
+    - task: geometry::segment
+      score: 100
+    - task: geometry::ray
+      score: 100
+    - task: geometry::polygon
+      score: 100
+    - task: geometry::circle
+      score: 100
+
 - group: 01-homework-big-one
   start: 19-05-2023 11:00
   deadline: 09-06-2023 23:59

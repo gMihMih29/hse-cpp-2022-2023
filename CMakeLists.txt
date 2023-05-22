@@ -67,3 +67,13 @@ add_subdirectory(tasks/queue)
 add_subdirectory(tasks/string_view)
 add_subdirectory(tasks/string)
 add_subdirectory(tasks/cstring)
+
+
+#6
+add_subdirectory(tasks/geometry::vector)
+add_subdirectory(tasks/geometry::point)
+add_subdirectory(tasks/geometry::line)
+add_subdirectory(tasks/geometry::segment)
+add_subdirectory(tasks/geometry::ray)
+add_subdirectory(tasks/geometry::polygon)
+add_subdirectory(tasks/geometry::circle)
