@@ -1,5 +1,5 @@
 {
   "allow_change": "queue.cpp",
-  "tests": "test_queu",
+  "tests": "test_queue",
   "solutions": "private"
 }
