@@ -70,10 +70,10 @@ add_subdirectory(tasks/cstring)
 
 
 #6
-add_subdirectory(tasks/geometry::vector)
-add_subdirectory(tasks/geometry::point)
-add_subdirectory(tasks/geometry::line)
-add_subdirectory(tasks/geometry::segment)
-add_subdirectory(tasks/geometry::ray)
-add_subdirectory(tasks/geometry::polygon)
-add_subdirectory(tasks/geometry::circle)
+add_subdirectory(tasks/geometry_vector)
+add_subdirectory(tasks/geometry_point)
+add_subdirectory(tasks/geometry_line)
+add_subdirectory(tasks/geometry_segment)
+add_subdirectory(tasks/geometry_ray)
+add_subdirectory(tasks/geometry_polygon)
+add_subdirectory(tasks/geometry_circle)
