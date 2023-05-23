@@ -64,6 +64,13 @@ const char& String::At(size_t idx) const {
     return data_[idx];
 }
 
+char& String::At(size_t idx) {
+    if (idx >= size_) {
+        throw StringOutOfRange();
+    }
+    return data_[idx];
+}
+
 const char& String::Front() const {
     return data_[0];
 }
