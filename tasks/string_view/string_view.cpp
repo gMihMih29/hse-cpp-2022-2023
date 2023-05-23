@@ -43,7 +43,7 @@ bool StringView::Empty() const {
     return size_ == 0;
 }
 
-void StringView::Swap(StringView &other) {
+void StringView::Swap(StringView& other) {
     StringView mem = other;
     other = *this;
     size_ = mem.size_;
