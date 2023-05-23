@@ -16,7 +16,11 @@ String::String(size_t size, char symbol) : size_(size), capacity_(2 * size), dat
 String::String(const char* src) : String(src, std::strlen(src)) {  // NOLINT
 }
 
-String::String(const char* src, size_t size) : size_(size), capacity_(2 * size_), data_(new char[2 * size_]) {
+String::String(const char* src, size_t size) : size_(size), capacity_(2 * size_), data_(nullptr) {
+    if (capacity_ == 0) {
+        return;
+    }
+    data_ = new char[capacity_];
     for (size_t i = 0; i < size_; ++i) {
         data_[i] = src[i];
     }
@@ -26,9 +30,8 @@ String::~String() {
     delete[] data_;
 }
 
-String::String(const String& other) : size_(other.size_), capacity_(other.capacity_) {
-    if (size_ == 0) {
-        data_ = nullptr;
+String::String(const String& other) : size_(other.size_), capacity_(other.capacity_), data_(nullptr) {
+    if (capacity_ == 0) {
         return;
     }
     data_ = new char[capacity_];
@@ -158,7 +161,7 @@ void String::Resize(size_t new_size, char symbol) {
 }
 
 void String::Reserve(size_t new_capacity) {
-    capacity_ = new_capacity;
+    capacity_ = std::max(new_capacity, capacity_);
     char* new_data = new char[capacity_];
     for (size_t i = 0; i < size_; ++i) {
         new_data[i] = data_[i];
@@ -168,7 +171,16 @@ void String::Reserve(size_t new_capacity) {
 }
 
 void String::ShrinkToFit() {
-    Reserve(size_);
+    char* new_data = nullptr;
+    if (size_ != 0) {
+        new_data = new char[size_];
+    }
+    for (size_t i = 0; i < size_; ++i) {
+        new_data[i] = data_[i];
+    }
+    delete[] data_;
+    data_ = new_data;
+    capacity_ = size_;
 }
 
 int String::Compare(const String& other) const {
