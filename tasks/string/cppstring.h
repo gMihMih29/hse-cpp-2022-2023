@@ -3,8 +3,8 @@
 
 #include <algorithm>
 #include <cstring>
-#include <stdexcept>
 #include <iostream>
+#include <stdexcept>
 
 class StringOutOfRange : public std::out_of_range {
 public:
