@@ -63,7 +63,7 @@ char* Strncpy(char* dest, const char* src, size_t count) {
     size_t src_size = Strlen(src);
     for (size_t i = 0; i < count; ++i) {
         if (i >= src_size) {
-            *(dest + i) = static_cast<char>(0);
+            *(dest + i) = '\0';
         }
         *(dest + i) = *(src + i);
     }
