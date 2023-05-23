@@ -25,6 +25,6 @@ public:
     StringView Substr(size_t pos, size_t count = -1);
 
 private:
-    const char *string_;
+    const char* string_;
     size_t size_;
 };
