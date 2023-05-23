@@ -154,7 +154,7 @@ void String::PushBack(char c) {
 
 void String::Resize(size_t new_size, char symbol) {
     if (new_size > capacity_) {
-        Reserve(new_size);
+        Reserve(2 * new_size);
     }
     for (size_t i = size_; i < new_size; ++i) {
         data_[i] = symbol;
@@ -163,6 +163,9 @@ void String::Resize(size_t new_size, char symbol) {
 }
 
 void String::Reserve(size_t new_capacity) {
+    if (new_capacity == 0) {
+        return;
+    }
     capacity_ = std::max(new_capacity, capacity_);
     char* new_data = new char[capacity_];
     for (size_t i = 0; i < size_; ++i) {
