@@ -64,6 +64,7 @@ char* Strncpy(char* dest, const char* src, size_t count) {
     for (size_t i = 0; i < count; ++i) {
         if (i >= src_size) {
             *(dest + i) = '\0';
+            continue;
         }
         *(dest + i) = *(src + i);
     }
