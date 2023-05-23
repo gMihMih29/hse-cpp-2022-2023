@@ -4,10 +4,10 @@ String::String() : size_(0), capacity_(0), data_(nullptr) {
 }
 
 String::String(size_t size, char symbol) : size_(size), capacity_(2 * size), data_(nullptr) {
-    if (size_ == 0) {
+    if (capacity_ == 0) {
         return;
     }
-    data_ = new char[2 * size_];
+    data_ = new char[capacity_];
     for (size_t i = 0; i < size; ++i) {
         data_[i] = symbol;
     }
@@ -127,13 +127,15 @@ void String::Clear() {
 }
 
 void String::Swap(String& other) {
-    String mem = other;
+    size_t mem_size = other.size_;
+    size_t mem_capacity = other.capacity_;
+    char* mem_data = other.data_;
     other.size_ = size_;
     other.capacity_ = capacity_;
     other.data_ = data_;
-    size_ = mem.size_;
-    capacity_ = mem.capacity_;
-    data_ = mem.data_;
+    size_ = mem_size;
+    capacity_ = mem_capacity;
+    data_ = mem_data;
 }
 
 void String::PopBack() {
