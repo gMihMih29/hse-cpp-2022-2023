@@ -16,7 +16,7 @@ String::String(size_t size, char symbol) : size_(size), capacity_(2 * size), dat
 String::String(const char* src) : String(src, std::strlen(src)) {  // NOLINT
 }
 
-String::String(const char *src, size_t size) : size_(size), capacity_(2 * size_), data_(new char[2 * size_]) {
+String::String(const char* src, size_t size) : size_(size), capacity_(2 * size_), data_(new char[2 * size_]) {
     for (size_t i = 0; i < size_; ++i) {
         data_[i] = src[i];
     }
@@ -123,7 +123,7 @@ void String::Clear() {
     size_ = 0;
 }
 
-void String::Swap(String &other) {
+void String::Swap(String& other) {
     String mem = other;
     other.size_ = size_;
     other.capacity_ = capacity_;
@@ -204,7 +204,7 @@ String operator+(const String& first, const String& second) {
     return ans += second;
 }
 
-std::ostream& operator<<(std::ostream& stream, const String &string) {
+std::ostream& operator<<(std::ostream& stream, const String& string) {
     for (size_t i = 0; i < string.Size(); ++i) {
         stream << string[i];
     }
@@ -237,6 +237,6 @@ bool operator<=(const String& first, const String& second) {
 
 void SafeCpy(char* dest, const char* src, size_t len) {
     for (size_t i = 0; i < len; ++i) {
-        *(dest + i) = *(src + i);;
+        *(dest + i) = *(src + i);
     }
 }

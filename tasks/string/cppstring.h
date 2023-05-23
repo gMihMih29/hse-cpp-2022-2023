@@ -15,7 +15,7 @@ public:
 class String {
     size_t size_;
     size_t capacity_;
-    char *data_;
+    char* data_;
 
 public:
     String();
@@ -42,7 +42,7 @@ public:
     size_t Length() const;
     size_t Capacity() const;
     void Clear();
-    void Swap(String &other);
+    void Swap(String& other);
     void PopBack();
     void PushBack(char c);
     void Resize(size_t new_size, char symbol);
