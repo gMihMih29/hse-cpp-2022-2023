@@ -1,6 +1,8 @@
 #ifndef STRING_H
 #define STRING_H
 
+#include <algorithm>
+#include <cstring>
 #include <stdexcept>
 #include <iostream>
 
@@ -18,23 +20,23 @@ class String {
 public:
     String();
     String(size_t size, char symbol);
-    String(const char *src);  // NOLINT
-    String(const char *src, size_t size);
+    String(const char* src);  // NOLINT
+    String(const char* src, size_t size);
     ~String();
-    String(const String &other);
-    String &operator=(const String &other);
-    const char &operator[](size_t idx) const;
-    char &operator[](size_t idx);
-    const char &At(size_t idx) const;
-    char &At(size_t idx);
-    const char &Front() const;
-    char &Front();
-    const char &Back() const;
-    char &Back();
-    const char *Data() const;
-    char *Data();
-    const char *CStr() const;
-    char *CStr();
+    String(const String& other);
+    String& operator=(const String& other);
+    const char& operator[](size_t idx) const;
+    char& operator[](size_t idx);
+    const char& At(size_t idx) const;
+    char& At(size_t idx);
+    const char& Front() const;
+    char& Front();
+    const char& Back() const;
+    char& Back();
+    const char* Data() const;
+    char* Data();
+    const char* CStr() const;
+    char* CStr();
     bool Empty() const;
     size_t Size() const;
     size_t Length() const;
@@ -46,17 +48,17 @@ public:
     void Resize(size_t new_size, char symbol);
     void Reserve(size_t new_capacity);
     void ShrinkToFit();
-    int Compare(const String &other) const;
-    String &operator+=(const String &other);
-    friend String operator+(const String &first, const String &second);
+    int Compare(const String& other) const;
+    String& operator+=(const String& other);
+    friend String operator+(const String& first, const String& second);
 };
 #endif  // STRING_H
 
-std::ostream &operator<<(std::ostream &stream, const String &string);
-bool operator==(const String &first, const String &second);
-bool operator!=(const String &first, const String &second);
-bool operator>(const String &first, const String &second);
-bool operator<(const String &first, const String &second);
-bool operator>=(const String &first, const String &second);
-bool operator<=(const String &first, const String &second);
-void SafeCpy(char *dest, const char *src, size_t len);
+std::ostream& operator<<(std::ostream& stream, const String& string);
+bool operator==(const String& first, const String& second);
+bool operator!=(const String& first, const String& second);
+bool operator>(const String& first, const String& second);
+bool operator<(const String& first, const String& second);
+bool operator>=(const String& first, const String& second);
+bool operator<=(const String& first, const String& second);
+void SafeCpy(char* dest, const char* src, size_t len);
