@@ -7,6 +7,7 @@ String::String(size_t size, char symbol) : size_(size), capacity_(2 * size), dat
     if (capacity_ == 0) {
         return;
     }
+    delete[] data_;
     data_ = new char[capacity_];
     for (size_t i = 0; i < size; ++i) {
         data_[i] = symbol;
@@ -163,10 +164,10 @@ void String::Resize(size_t new_size, char symbol) {
 }
 
 void String::Reserve(size_t new_capacity) {
-    if (new_capacity == 0) {
+    if (capacity_ >= new_capacity) {
         return;
     }
-    capacity_ = std::max(new_capacity, capacity_);
+    capacity_ = new_capacity;
     char* new_data = new char[capacity_];
     for (size_t i = 0; i < size_; ++i) {
         new_data[i] = data_[i];
