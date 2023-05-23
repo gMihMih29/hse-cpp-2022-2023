@@ -169,6 +169,7 @@ const char* Strstr(const char* str, const char* pattern) {
         for (size_t j = 0; j < size_pattern; ++j) {
             if (*(str + i + j) != *(pattern + j)) {
                 is_identical = false;
+                break;
             }
         }
         if (is_identical) {
