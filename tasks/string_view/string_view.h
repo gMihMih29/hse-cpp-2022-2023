@@ -1,5 +1,7 @@
 #pragma once
 #include <cstdlib>
+#include <cstring>
+#include <stdexcept>
 
 struct StringViewOutOfRange {};
 
@@ -7,7 +9,11 @@ class StringView {
 public:
     StringView();
     StringView(const char *source);  // NOLINT
-    explicit StringView(const char *cstyle, size_t length);
+    explicit StringView(const char *cstyle, size_t length)
+        : string_(cstyle),
+        size_(length)
+    {
+    }
     char operator[](size_t idx) const;
     char At(size_t idx) const;
     char Front() const;
