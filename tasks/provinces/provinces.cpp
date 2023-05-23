@@ -12,7 +12,7 @@ int64_t CountPassports(const std::vector<int>& provinces) {
         val1 = *s.begin();
         s.erase(s.begin());
         val2 = *s.begin();
-        s.erase(s.begin()); 
+        s.erase(s.begin());
         answer += val1 + val2;
         s.insert(val1 + val2);
     }
