@@ -9,7 +9,7 @@ class StringView {
 public:
     StringView();
     StringView(const char *source);  // NOLINT
-    explicit StringView(const char *cstyle, size_t length): string_(cstyle), size_(length) {
+    explicit StringView(const char *cstyle, size_t length) : string_(cstyle), size_(length) {
     }
     char operator[](size_t idx) const;
     char At(size_t idx) const;
