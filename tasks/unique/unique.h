@@ -1,10 +1,12 @@
 #pragma once
 
+#include <algorithm>
+
 template <typename T>
 T Unique(T begin, T end) {
     T unique_end = begin;
-    bool flag = begin != end;
     ++begin;
+    bool flag = begin != end;
     for (; begin < end; ++begin) {
         if (*unique_end != *begin) {
             ++unique_end;
