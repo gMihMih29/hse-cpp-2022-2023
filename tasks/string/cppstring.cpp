@@ -44,8 +44,11 @@ String::String(const String& other) : size_(other.size_), capacity_(other.capaci
 String& String::operator=(const String& other) {
     size_ = other.size_;
     capacity_ = other.capacity_;
+    delete[] data_;
     if (capacity_ != 0) {
         data_ = new char[capacity_];
+    } else {
+        data_ = nullptr;
     }
     for (size_t i = 0; i < size_; ++i) {
         data_[i] = other.data_[i];
