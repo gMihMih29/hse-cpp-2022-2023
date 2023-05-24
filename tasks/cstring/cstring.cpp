@@ -32,6 +32,9 @@ int Strcmp(const char* first, const char* second) {
 
 int Strncmp(const char* first, const char* second, size_t count) {
     size_t i = 0;
+    if (count == 0) {
+        return 0;
+    }
     for (; i < count && *(first + i) != '\0' && *(second + i) != '\0'; ++i) {
         if (*(first + i) < *(second + i)) {
             return -1;
@@ -165,7 +168,7 @@ const char* Strstr(const char* str, const char* pattern) {
     size_t size_str = Strlen(str);
     size_t size_pattern = Strlen(pattern);
     if (size_pattern == 0) {
-        return nullptr;
+        return pattern;
     }
     for (size_t i = 0; i <= size_str - size_pattern; ++i) {
         bool is_identical = true;
