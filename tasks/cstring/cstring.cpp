@@ -164,6 +164,9 @@ const char* Strpbrk(const char* dest, const char* breakset) {
 }
 
 const char* Strstr(const char* str, const char* pattern) {
+    if (!str || !pattern) {
+        return nullptr;
+    }
     size_t size_str = Strlen(str);
     size_t size_pattern = Strlen(pattern);
     if (size_pattern == 0) {
