@@ -71,7 +71,6 @@ char* Strncpy(char* dest, const char* src, size_t count) {
         }
         *(dest + i) = *(src + i);
     }
-    *(dest + count) = '\0';
     return dest;
 }
 
