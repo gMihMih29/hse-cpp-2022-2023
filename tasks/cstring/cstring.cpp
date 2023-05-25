@@ -169,6 +169,9 @@ const char* Strstr(const char* str, const char* pattern) {
     }
     size_t size_str = Strlen(str);
     size_t size_pattern = Strlen(pattern);
+    if (size_str < size_pattern) {
+        return nullptr;
+    }
     if (size_pattern == 0) {
         return str;
     }
