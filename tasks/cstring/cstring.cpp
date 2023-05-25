@@ -170,7 +170,7 @@ const char* Strstr(const char* str, const char* pattern) {
     if (size_pattern == 0 || str == pattern) {
         return str;
     }
-    for (size_t i = 0; i < size_str - size_pattern; ++i) {
+    for (size_t i = 0; i <= size_str - size_pattern; ++i) {
         bool is_identical = true;
         for (size_t j = 0; j < size_pattern; ++j) {
             if (*(str + i + j) != *(pattern + j)) {
