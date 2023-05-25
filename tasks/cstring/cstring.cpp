@@ -31,10 +31,10 @@ int Strcmp(const char* first, const char* second) {
 }
 
 int Strncmp(const char* first, const char* second, size_t count) {
-    size_t i = 0;
     if (count == 0) {
         return 0;
     }
+    size_t i = 0;
     for (; i < count && *(first + i) != '\0' && *(second + i) != '\0'; ++i) {
         if (*(first + i) < *(second + i)) {
             return -1;
@@ -43,7 +43,7 @@ int Strncmp(const char* first, const char* second, size_t count) {
             return 1;
         }
     }
-    if (*(first + i) == '\0' && *(second + i) == '\0') {
+    if ((*(first + i) == '\0' && *(second + i) == '\0') || (*(first + i) != '\0' && *(second + i) != '\0')) {
         return 0;
     }
     if (*(first + i) == '\0') {
