@@ -43,6 +43,9 @@ int Strncmp(const char* first, const char* second, size_t count) {
             return 1;
         }
     }
+    if (i == count) {
+        return 0;
+    }
     if ((*(first + i) == '\0' && *(second + i) == '\0') || (*(first + i) != '\0' && *(second + i) != '\0')) {
         return 0;
     }
