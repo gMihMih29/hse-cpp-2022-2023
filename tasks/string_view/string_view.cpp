@@ -72,7 +72,7 @@ StringView StringView::Substr(size_t pos, size_t count) {
     if (pos >= size_) {
         throw StringViewOutOfRange();
     }
-    if (size_ - pos <= count) {
+    if (size_ - pos < count) {
         throw StringViewOutOfRange();
     }
     return StringView(string_ + pos, count == 0 ? size_ - pos : count);
