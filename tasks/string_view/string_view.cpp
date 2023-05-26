@@ -51,14 +51,26 @@ void StringView::Swap(StringView& other) {
 }
 
 void StringView::RemovePrefix(size_t prefix_size) {
-    string_ += prefix_size;
-    size_ -= prefix_size;
+    if (size_ < prefix_size) {
+        string_ += size_;
+        size_ = 0;
+    } else {
+        string_ += prefix_size;
+        size_ -= prefix_size;
+    }
 }
 
 void StringView::RemoveSuffix(size_t suffix_size) {
-    size_ -= suffix_size;
+    if (size_ < suffix_size) {
+        size_ = 0;
+    } else {
+        size_ -= suffix_size;
+    }
 }
 
 StringView StringView::Substr(size_t pos, size_t count) {
+    if (pos >= size_) {
+        throw StringViewOutOfRange();
+    }
     return StringView(string_ + pos, count == 0 ? size_ - pos : count);
 }
