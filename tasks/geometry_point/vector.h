@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <cstdint>
 
 namespace geometry {
 class Vector {
@@ -39,10 +40,20 @@ public:
 
     bool operator==(const Vector& other) const;
 
-    friend int64_t ScalarMult(const Vector& first, const Vector& second);
+    friend int64_t ScalarMult(const Vector& first, const Vector& second) {
+        return first.GetX() * second.GetX() + first.GetY() * second.GetY();
+    }
 
-    friend int64_t VectorMult(const Vector& first, const Vector& second);
+    friend int64_t VectorMult(const Vector& first, const Vector& second) {
+        return first.GetX() * second.GetY() - first.GetY() * second.GetX();
+    }
 
-    friend double Length(const Vector& vector);
+    friend double Length(const Vector& vector) {
+        return std::sqrt(vector.GetX() * vector.GetX() + vector.GetY() * vector.GetY());
+    }
+
+    friend int64_t SquaredLength(const Vector& vector) {
+        return vector.GetX() * vector.GetX() + vector.GetY() * vector.GetY();
+    }
 };
 }  // namespace geometry

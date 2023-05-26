@@ -6,6 +6,10 @@
 namespace geometry {
 class Point : public IShape {
 public:
+    Point() = default;
+
+    Point(int64_t, int64_t);
+
     int64_t GetX() const;
 
     int64_t GetY() const;
@@ -22,11 +26,9 @@ public:
 
     Point* Clone() const override;
 
-    Point() = default;
-
-    Point(int64_t, int64_t);
-
     Vector operator-(Point other) const;
+
+    bool operator==(const Point& other) const;
 
 private:
     int64_t x_coord_;
