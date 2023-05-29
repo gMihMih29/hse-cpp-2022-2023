@@ -1,8 +1,8 @@
 #include "circle.h"
 
+#include "line.h"
 #include "point.h"
 #include "segment.h"
-#include "line.h"
 
 namespace geometry {
 Circle::Circle() : centre_(Point(0, 0)), radius_(0) {
