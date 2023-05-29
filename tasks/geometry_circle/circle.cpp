@@ -25,7 +25,8 @@ bool Circle::CrossesSegment(const Segment& segment) const {
         return true;
     }
     Line l(segment.GetStart(), segment.GetEnd());
-    return static_cast<double>(radius_) >= l.Distance(centre_);
+    Line perped_l(centre_, Point(-l.GetB(), l.GetA()));
+    return static_cast<double>(radius_) >= l.Distance(centre_) && perped_l.CrossesSegment(segment);
 }
 
 Circle* Circle::Clone() const {
