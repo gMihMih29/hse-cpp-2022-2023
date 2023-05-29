@@ -26,13 +26,10 @@ bool Ray::ContainsPoint(const Point& point) const {
 }
 
 bool Ray::CrossesSegment(const Segment& segment) const {
-    if (segment.ContainsPoint(start_)) {
-        return true;
-    }
     Vector guiding = end_ - start_;
     Vector diff1 = segment.GetStart() - start_;
     Vector diff2 = segment.GetEnd() - start_;
-    return ScalarMult(guiding, diff1) >= 0 && ScalarMult(guiding, diff2) > 0 &&
+    return ScalarMult(guiding, diff1) >= 0 && ScalarMult(guiding, diff2) >= 0 &&
            ((VectorMult(diff1, guiding) >= 0 && VectorMult(diff2, guiding) <= 0) ||
             (VectorMult(diff1, guiding) <= 0 && VectorMult(diff2, guiding) >= 0));
 }
