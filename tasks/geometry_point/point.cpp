@@ -33,9 +33,6 @@ bool Point::ContainsPoint(const Point& p) const {
 }
 
 bool Point::CrossesSegment(const Segment& seg) const {
-    if (seg.GetStart() == *this || seg.GetEnd() == *this) {
-        return true;
-    }
     Vector guiding_vector = seg.GetEnd() - seg.GetStart();
     Vector difference = *this - seg.GetStart();
     int64_t sc_result = ScalarMult(guiding_vector, difference);
