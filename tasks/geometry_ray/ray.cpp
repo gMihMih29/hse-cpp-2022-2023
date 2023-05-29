@@ -26,7 +26,7 @@ bool Ray::ContainsPoint(const Point& point) const {
 }
 
 bool Ray::CrossesSegment(const Segment& segment) const {
-    if (segment.ContainsPoint(start_)) {
+    if (segment.ContainsPoint(start_) || ContainsPoint(segment.GetStart()) || ContainsPoint(segment.GetEnd())) {
         return true;
     }
     Vector guiding = end_ - start_;
