@@ -12,13 +12,13 @@ class Line : public IShape {
  public:
   Line();
 
+  Line(Point start, Point end);
+
   int64_t GetA() const;
 
   int64_t GetB() const;
 
   int64_t GetC() const;
-
-  Line(Point start, Point end);
 
   double Distance(Point) const;
 

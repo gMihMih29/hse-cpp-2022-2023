@@ -17,20 +17,12 @@ public:
 
     Point GetEnd() const;
 
-    Segment& Move(const Vector& vector) override {
-        return *this;
-    };
-    bool ContainsPoint(const Point& point) const override {
-        return false;
-    }
+    Segment& Move(const Vector& vector) override;
 
-    bool CrossesSegment(const Segment& segment) const override {
-        return false;
-    };
+    bool ContainsPoint(const Point& point) const override;
 
-    Segment* Clone() const override {
-        return nullptr;
-    };
+    bool CrossesSegment(const Segment& segment) const override;
 
+    Segment* Clone() const override;
 };
 }  // namespace geometry
