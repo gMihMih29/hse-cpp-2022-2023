@@ -26,11 +26,12 @@ bool Segment::ContainsPoint(const Point& point) const {
 }
 
 bool Segment::CrossesSegment(const Segment& segment) const {
+    if (segment.ContainsPoint(GetStart()) || segment.ContainsPoint(GetEnd()) ||
+        ContainsPoint(segment.GetStart()) || ContainsPoint(segment.GetEnd())) {
+        return true;
+    }
     Vector guiding_vector1 = GetEnd() - GetStart();
     Vector guiding_vector2 = segment.GetEnd() - segment.GetStart();
-    if (VectorMult(guiding_vector1, guiding_vector2) == 0) {
-        return ContainsPoint(segment.GetStart()) || ContainsPoint(segment.GetEnd());
-    }
     Vector v1 = segment.GetEnd() - GetStart();
     Vector v2 = segment.GetStart() - GetStart();
     Vector v3 = segment.GetStart() - GetEnd();
