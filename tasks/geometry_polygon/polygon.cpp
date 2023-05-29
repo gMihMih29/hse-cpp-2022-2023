@@ -5,6 +5,8 @@
 
 #include "segment.h"
 
+const double EPS = 1e-9;
+
 namespace geometry {
 Polygon::Polygon() : points_(std::vector<Point>(0)), num_points_(0) {
 }
@@ -22,7 +24,7 @@ bool Polygon::ContainsPoint(const Point& point) const {
         angle += std::atan2(VectorMult(points_[i] - point, points_[(i + 1) % points_.size()] - point),
                             ScalarMult(points_[i] - point, points_[(i + 1) % points_.size()] - point));
     }
-    if (std::abs(angle) < 1e-9) {
+    if (std::abs(angle) < EPS) {
         return false;
     }
     return true;
