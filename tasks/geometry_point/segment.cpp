@@ -26,8 +26,8 @@ bool Segment::ContainsPoint(const Point& point) const {
 }
 
 bool Segment::CrossesSegment(const Segment& segment) const {
-    if (segment.ContainsPoint(GetStart()) || segment.ContainsPoint(GetEnd()) ||
-        ContainsPoint(segment.GetStart()) || ContainsPoint(segment.GetEnd())) {
+    if (segment.ContainsPoint(GetStart()) || segment.ContainsPoint(GetEnd()) || ContainsPoint(segment.GetStart()) ||
+        ContainsPoint(segment.GetEnd())) {
         return true;
     }
     Vector guiding_vector1 = GetEnd() - GetStart();
