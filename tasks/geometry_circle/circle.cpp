@@ -4,6 +4,8 @@
 #include "point.h"
 #include "segment.h"
 
+const double EPS = 1e-9;
+
 namespace geometry {
 Circle::Circle() : centre_(Point(0, 0)), radius_(0) {
 }
@@ -17,7 +19,7 @@ Circle& Circle::Move(const Vector& vector) {
 }
 
 bool Circle::ContainsPoint(const Point& point) const {
-    return std::abs(static_cast<double>(radius_) - Length(point - centre_)) <= static_cast<double>(radius_);
+    return static_cast<double>(radius_) >= Length(point - centre_);
 }
 
 bool Circle::CrossesSegment(const Segment& segment) const {
@@ -26,7 +28,7 @@ bool Circle::CrossesSegment(const Segment& segment) const {
     }
     Line l(segment.GetStart(), segment.GetEnd());
     Line perped_l(centre_, Point(l.GetA() + centre_.GetX(), l.GetB() + centre_.GetY()));
-    return static_cast<double>(radius_) >= l.Distance(centre_) && perped_l.CrossesSegment(segment);
+    return static_cast<double>(radius_) - l.Distance(centre_) > -EPS && perped_l.CrossesSegment(segment);
 }
 
 Circle* Circle::Clone() const {
