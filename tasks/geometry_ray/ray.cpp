@@ -17,6 +17,9 @@ Ray& Ray::Move(const Vector& vector) {
 }
 
 bool Ray::ContainsPoint(const Point& point) const {
+    if (start_ == point) {
+        return true;
+    }
     Vector diff = point - start_;
     Vector guiding = end_ - start_;
     return ScalarMult(diff, guiding) > 0 && VectorMult(diff, guiding) == 0;
