@@ -14,7 +14,7 @@ private:
 public:
     Polygon();
 
-    explicit Polygon(std::vector<Point> points) : points_(points), num_points_(points.size()){
+    explicit Polygon(std::vector<Point> points) : points_(points), num_points_(points.size()) {
     }
 
     Polygon& Move(const Vector& vector) override;
