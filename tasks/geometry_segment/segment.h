@@ -1,37 +1,28 @@
-#ifndef GEOMETRYCLASSES__SEGMENT_H_
-#define GEOMETRYCLASSES__SEGMENT_H_
-
+#pragma once
 #include "i_shape.h"
 #include "point.h"
-#include "vector.h"
 
 namespace geometry {
 class Segment : public IShape {
- private:
-  Point start_;
-  Point end_;
+private:
+    Point start_;
+    Point end_;
 
- public:
-  Segment();
+public:
+    Segment();
 
-  Segment(Point, Point);
+    Segment(Point, Point);
 
-  Point GetStart() const;
+    Point GetStart() const;
 
-  Point GetEnd() const;
+    Point GetEnd() const;
 
-  double Distance(Point) const;
+    Segment& Move(const Vector& vector) override;
 
-  bool Degenerate() const;
+    bool ContainsPoint(const Point& point) const override;
 
-  Segment& Move(const Vector& vector) override;
+    bool CrossesSegment(const Segment& segment) const override;
 
-  bool ContainsPoint(const Point& point) const override;
-
-  bool CrossesSegment(const Segment& segment) const override;
-
-  Segment* Clone() const override;
+    Segment* Clone() const override;
 };
 }  // namespace geometry
-
-#endif  // GEOMETRYCLASSES__SEGMENT_H_
