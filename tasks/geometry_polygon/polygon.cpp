@@ -21,6 +21,9 @@ Polygon& Polygon::Move(const Vector& vector) {
 bool Polygon::ContainsPoint(const Point& point) const {
     double angle = 0;
     for (size_t i = 0; i < points_.size(); ++i) {
+        if (point == points_[i]) {
+            return true;
+        }
         angle += std::atan2(VectorMult(points_[i] - point, points_[(i + 1) % points_.size()] - point),
                             ScalarMult(points_[i] - point, points_[(i + 1) % points_.size()] - point));
     }
