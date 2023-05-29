@@ -2,6 +2,7 @@
 
 #include "point.h"
 #include "segment.h"
+#include "line.h"
 
 namespace geometry {
 Circle::Circle() : centre_(Point(0, 0)), radius_(0) {
@@ -23,10 +24,8 @@ bool Circle::CrossesSegment(const Segment& segment) const {
     if (ContainsPoint(segment.GetStart()) || ContainsPoint(segment.GetEnd())) {
         return true;
     }
-    Vector diff1 = segment.GetStart() - centre_;
-    Vector diff2 = segment.GetEnd() - centre_;
-    Vector v = (diff1 + diff2) / 2;
-    return ContainsPoint(Point(v.GetX(), v.GetY()));
+    Line l(segment.GetStart(), segment.GetEnd());
+    return static_cast<double>(radius_) >= l.Distance(centre_);
 }
 
 Circle* Circle::Clone() const {
