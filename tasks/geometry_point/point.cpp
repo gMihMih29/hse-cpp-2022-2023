@@ -42,7 +42,7 @@ bool Point::CrossesSegment(const Segment& seg) const {
     Vector difference = *this - seg.GetStart();
     int64_t sc_result = ScalarMult(guiding_vector, difference);
     return Length(guiding_vector) > Length(difference) &&
-           (sc_result / Length(guiding_vector) / Length(difference) - 1) < 1e-9;
+           (sc_result / Length(guiding_vector) / Length(difference) - 1) < EPS;
 }
 
 Point* Point::Clone() const {
