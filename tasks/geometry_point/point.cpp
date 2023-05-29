@@ -2,6 +2,8 @@
 
 #include "segment.h"
 
+const double EPS = 1e-9;
+
 namespace geometry {
 Point::Point(int64_t x, int64_t y) : x_coord_(x), y_coord_(y) {
 }
@@ -34,13 +36,13 @@ bool Point::ContainsPoint(const Point& p) const {
 
 bool Point::CrossesSegment(const Segment& seg) const {
     if (seg.GetStart() == *this || seg.GetEnd() == *this) {
-        return false;
+        return true;
     }
     Vector guiding_vector = seg.GetEnd() - seg.GetStart();
     Vector difference = *this - seg.GetStart();
     int64_t sc_result = ScalarMult(guiding_vector, difference);
     return Length(guiding_vector) > Length(difference) &&
-           sc_result * sc_result / SquaredLength(guiding_vector) / SquaredLength(difference) == 1;
+           (sc_result / Length(guiding_vector) / Length(difference) - 1) < 1e-9;
 }
 
 Point* Point::Clone() const {
