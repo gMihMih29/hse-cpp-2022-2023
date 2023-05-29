@@ -25,6 +25,5 @@ public:
     bool CrossesSegment(const Segment& segment) const override;
 
     Segment* Clone() const override;
-
 };
 }  // namespace geometry
