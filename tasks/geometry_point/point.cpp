@@ -40,7 +40,7 @@ bool Point::CrossesSegment(const Segment& seg) const {
     }
     Vector guiding_vector = seg.GetEnd() - seg.GetStart();
     Vector difference = *this - seg.GetStart();
-    int64_t sc_result = ScalarMult(guiding_vector, difference);
+    double sc_result = static_cast<double>(ScalarMult(guiding_vector, difference));
     return Length(guiding_vector) > Length(difference) &&
            (sc_result / Length(guiding_vector) / Length(difference) - 1) < EPS;
 }
