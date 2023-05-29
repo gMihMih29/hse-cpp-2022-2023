@@ -1,6 +1,7 @@
 #include "ray.h"
-#include "vector.h"
+
 #include "segment.h"
+#include "vector.h"
 
 namespace geometry {
 Ray::Ray() : start_(Point(0, 0)), end_(Point(0, 0)) {
@@ -27,7 +28,7 @@ bool Ray::CrossesSegment(const Segment& segment) const {
     Vector diff2 = segment.GetEnd() - start_;
     return ScalarMult(guiding, diff1) > 0 && ScalarMult(guiding, diff2) > 0 &&
            ((VectorMult(diff1, guiding) >= 0 && VectorMult(diff2, guiding) <= 0) ||
-           (VectorMult(diff1, guiding) <= 0 && VectorMult(diff2, guiding) >= 0));
+            (VectorMult(diff1, guiding) <= 0 && VectorMult(diff2, guiding) >= 0));
 }
 
 Ray* Ray::Clone() const {
