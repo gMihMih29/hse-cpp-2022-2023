@@ -39,7 +39,8 @@ bool Point::CrossesSegment(const Segment& seg) const {
     Vector guiding_vector = seg.GetEnd() - seg.GetStart();
     Vector difference = *this - seg.GetStart();
     int64_t sc_result = ScalarMult(guiding_vector, difference);
-    return Length(guiding_vector) > Length(difference) && sc_result * sc_result / SquaredLength(guiding_vector) / SquaredLength(difference) == 1;
+    return Length(guiding_vector) > Length(difference) && 
+           sc_result * sc_result / SquaredLength(guiding_vector) / SquaredLength(difference) == 1;
 }
 
 Point* Point::Clone() const {
@@ -53,4 +54,4 @@ Vector Point::operator-(Point other) const {
 bool Point::operator==(const Point& other) const {
     return x_coord_ == other.GetX() && y_coord_ == other.GetY();
 }
-} // namespace geometry
+}  // namespace geometry

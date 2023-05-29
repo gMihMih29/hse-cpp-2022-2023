@@ -35,13 +35,13 @@ bool Segment::CrossesSegment(const Segment& segment) const {
     Vector v2 = segment.GetStart() - GetStart();
     Vector v3 = segment.GetStart() - GetEnd();
     bool is_on_different_sides1 = (VectorMult(v1, guiding_vector1) > 0 && VectorMult(v2, guiding_vector1) < 0) || 
-                                    (VectorMult(v1, guiding_vector1) < 0 && VectorMult(v2, guiding_vector1) > 0);
+                                  (VectorMult(v1, guiding_vector1) < 0 && VectorMult(v2, guiding_vector1) > 0);
     bool is_on_different_sides2 = (VectorMult(-v2, guiding_vector2) > 0 && VectorMult(-v3, guiding_vector2) < 0) || 
-                                    (VectorMult(-v2, guiding_vector2) < 0 && VectorMult(-v3, guiding_vector2) > 0);
+                                   (VectorMult(-v2, guiding_vector2) < 0 && VectorMult(-v3, guiding_vector2) > 0);
     return is_on_different_sides1 && is_on_different_sides2;
 }
 
 Segment* Segment::Clone() const {
     return new Segment(*this);
 }
-} // namespace geometry
+}  // namespace geometry

@@ -2,7 +2,6 @@
 #include "i_shape.h"
 #include "point.h"
 
-
 namespace geometry {
 class Segment : public IShape {
 private:
