@@ -40,4 +40,4 @@ int64_t Circle::GetRadius() const {
 Point Circle::GetCenter() const {
     return centre_;
 }
-} // namespace geometry
+}  // namespace geometry
