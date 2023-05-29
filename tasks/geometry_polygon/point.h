@@ -1,37 +1,37 @@
-#ifndef GEOMETRYCLASSES__POINT_H_
-#define GEOMETRYCLASSES__POINT_H_
+#pragma once
 
 #include "i_shape.h"
+#include "vector.h"
 
 namespace geometry {
 class Point : public IShape {
- public:
-  int64_t GetX() const;
+public:
+    Point() = default;
 
-  int64_t GetY() const;
+    Point(int64_t, int64_t);
 
-  void SetX(int64_t);
+    int64_t GetX() const;
 
-  void SetY(int64_t);
+    int64_t GetY() const;
 
-  Point& Move(const Vector&) override;
+    void SetX(int64_t);
 
-  bool ContainsPoint(const Point&) const override;
+    void SetY(int64_t);
 
-  bool CrossesSegment(const Segment&) const override;
+    Point& Move(const Vector&) override;
 
-  Point* Clone() const override;
+    bool ContainsPoint(const Point&) const override;
 
-  Point() = default;
+    bool CrossesSegment(const Segment&) const override;
 
-  Point(int64_t, int64_t);
+    Point* Clone() const override;
 
-  Vector operator-(Point other) const;
+    Vector operator-(Point other) const;
 
- private:
-  int64_t x_coord_;
-  int64_t y_coord_;
+    bool operator==(const Point& other) const;
+
+private:
+    int64_t x_coord_;
+    int64_t y_coord_;
 };
 }  // namespace geometry
-
-#endif  // GEOMETRYCLASSES__POINT_H_
