@@ -17,7 +17,7 @@ Circle& Circle::Move(const Vector& vector) {
 }
 
 bool Circle::ContainsPoint(const Point& point) const {
-    return static_cast<double>(radius_) >= Length(point - centre_);
+    return std::abs(static_cast<double>(radius_) - Length(point - centre_)) <= static_cast<double>(radius_);
 }
 
 bool Circle::CrossesSegment(const Segment& segment) const {
