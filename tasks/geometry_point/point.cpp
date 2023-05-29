@@ -39,7 +39,7 @@ namespace geometry
         Vector guiding_vector = seg.GetEnd() - seg.GetStart();
         Vector difference = *this - seg.GetStart();
         int64_t sc_result = ScalarMult(guiding_vector, difference);
-        return sc_result * sc_result / SquaredLength(guiding_vector) / SquaredLength(difference) == 1;
+        return Length(guiding_vector) > Length(difference) && sc_result * sc_result / SquaredLength(guiding_vector) / SquaredLength(difference) == 1;
     }
 
     Point* Point::Clone() const {
