@@ -23,6 +23,9 @@ bool Circle::ContainsPoint(const Point& point) const {
 }
 
 bool Circle::CrossesSegment(const Segment& segment) const {
+    if (ContainsPoint(segment.GetStart()) && ContainsPoint(segment.GetEnd())) {
+        return false;
+    }
     if (ContainsPoint(segment.GetStart()) || ContainsPoint(segment.GetEnd())) {
         return true;
     }
