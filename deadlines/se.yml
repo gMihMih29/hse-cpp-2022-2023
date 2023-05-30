@@ -1,4 +1,17 @@
-- group: 05-homework-five
+- group: 07-homework-seven
+  start: 30-05-2023 20:00
+  deadline: 11-06-2023 23:59
+  tasks:
+    - task: unique-ptr
+      score: 100
+    - task: dedup
+      score: 100
+#    - task: reader
+#      score: 100
+    - task: vector
+      score: 150
+
+- group: 06-homework-six
   start: 21-05-2023 20:00
   deadline: 04-06-2023 23:59
   tasks:

@@ -77,3 +77,10 @@ add_subdirectory(tasks/geometry_segment)
 add_subdirectory(tasks/geometry_ray)
 add_subdirectory(tasks/geometry_polygon)
 add_subdirectory(tasks/geometry_circle)
+
+
+#7
+add_subdirectory(tasks/dedup)
+add_subdirectory(tasks/unique-ptr)
+add_subdirectory(tasks/vector)
+#add_subdirectory(tasks/reader)
