@@ -6,6 +6,8 @@
 
 using std::string;
 
-std::vector<std::unique_ptr<string>> Duplicate(const std::vector<std::shared_ptr<string>>& items);
+template <class T>
+std::vector<std::unique_ptr<T>> Duplicate(const std::vector<std::shared_ptr<T>>& items);
 
-std::vector<std::shared_ptr<string>> DeDuplicate(const std::vector<std::unique_ptr<string>>& items);
+template <class T>
+std::vector<std::shared_ptr<T>> DeDuplicate(const std::vector<std::unique_ptr<T>>& items);
