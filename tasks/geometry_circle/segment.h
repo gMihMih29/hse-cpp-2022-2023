@@ -1,8 +1,6 @@
 #pragma once
-
 #include "i_shape.h"
 #include "point.h"
-#include "vector.h"
 
 namespace geometry {
 class Segment : public IShape {
@@ -18,10 +16,6 @@ public:
     Point GetStart() const;
 
     Point GetEnd() const;
-
-    double Distance(Point) const;
-
-    bool Degenerate() const;
 
     Segment& Move(const Vector& vector) override;
 
