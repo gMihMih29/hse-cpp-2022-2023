@@ -27,4 +27,3 @@ public:
     Point GetEnd() const;
 };
 }  // namespace geometry
-
