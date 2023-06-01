@@ -1,5 +1,7 @@
 #include "segment.h"
 
+#include <algorithm>
+
 namespace geometry {
 Segment::Segment() : start_(Point()), end_(Point()) {
 }
@@ -40,6 +42,24 @@ bool Segment::CrossesSegment(const Segment& segment) const {
     bool is_on_different_sides2 = (VectorMult(-v2, guiding_vector2) > 0 && VectorMult(-v3, guiding_vector2) < 0) ||
                                   (VectorMult(-v2, guiding_vector2) < 0 && VectorMult(-v3, guiding_vector2) > 0);
     return is_on_different_sides1 && is_on_different_sides2;
+}
+
+double Segment::Distance(Point p) const {
+    if (ContainsPoint(p)) {
+        return 0;
+    }
+    Vector diff1 = GetStart() - p;
+    Vector diff2 = GetEnd() - p;
+    if (Degenerate()) {
+        return Length(diff1);
+    }
+    Vector guiding = GetEnd() - GetStart();
+    double perpend = VectorMult(diff1, guiding) / Length(guiding);
+    return std::min(Length(diff1), std::min(Length(diff2), perpend));
+}
+
+bool Segment::Degenerate() const {
+    return GetStart() == GetEnd();
 }
 
 Segment* Segment::Clone() const {

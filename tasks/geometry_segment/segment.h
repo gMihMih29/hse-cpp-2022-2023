@@ -23,6 +23,10 @@ public:
 
     bool CrossesSegment(const Segment& segment) const override;
 
+    double Distance(Point) const;
+
+    bool Degenerate() const;
+
     Segment* Clone() const override;
 };
 }  // namespace geometry
