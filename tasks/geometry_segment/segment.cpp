@@ -54,7 +54,7 @@ double Segment::Distance(Point p) const {
         return Length(diff1);
     }
     Vector guiding = GetEnd() - GetStart();
-    double perpend = VectorMult(diff1, guiding) / Length(guiding);
+    double perpend = static_cast<double>(VectorMult(diff1, guiding)) / Length(guiding);
     return std::min(Length(diff1), std::min(Length(diff2), perpend));
 }
 
