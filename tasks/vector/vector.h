@@ -138,6 +138,7 @@ public:
         using difference_type = int;
         using pointer = T*;
         using reference = T&;
+
     public:
         Iterator() : ptr_(nullptr) {
         }
