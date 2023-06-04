@@ -9,7 +9,7 @@ public:
     Vector() : ptr_(nullptr), size_(0), capacity_(0) {
     }
 
-    Vector(size_t size) : size_(size), capacity_(2 * size) {
+    explicit Vector(size_t size) : size_(size), capacity_(2 * size) {  // NOLINT
         if (size == 0) {
             ptr_ = nullptr;
             return;
