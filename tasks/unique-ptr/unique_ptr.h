@@ -46,6 +46,7 @@ public:
         delete ptr_;
         ptr_ = nullptr;
     }
+
 private:
     T* ptr_;
 };
