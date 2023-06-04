@@ -20,7 +20,7 @@ public:
         }
     }
 
-    Vector(std::initializer_list<T> list) : size_(list.size()), capacity_(2 * list.size()) {
+    Vector(std::initializer_list<T> list) : size_(list.size()), capacity_(list.size()) {
         if (size_ == 0) {
             ptr_ = nullptr;
             return;
@@ -50,7 +50,7 @@ public:
         other.capacity_ = 0;
     }
 
-    void Swap(Vector& other) noexcept {
+    void Swap(Vector& other) {
         std::swap(ptr_, other.ptr_);
         std::swap(size_, other.size_);
         std::swap(capacity_, other.capacity_);
@@ -65,8 +65,10 @@ public:
 
     Vector& operator=(Vector&& rhv) {
         delete[] ptr_;
-        Vector tmp = rhv;
-        tmp.Swap(*this);
+        ptr_ = rhv.ptr_;
+        size_ = rhv.size_;
+        capacity_ = rhv.capacity_;
+        rhv.ptr_ = nullptr;
         return *this;
     }
 
@@ -94,11 +96,13 @@ public:
 
     void PushBack(T elem) {
         if (size_ == capacity_) {
-            Vector tmp(size_);
+            capacity_ = size_ == 0 ? 1 : 2 * size_;
+            T* tmp = new T[capacity_];
             for (size_t i = 0; i < size_; ++i) {
                 tmp[i] = ptr_[i];
             }
-            tmp.Swap(*this);
+            delete[] ptr_;
+            ptr_ = tmp;
         }
         ptr_[size_] = elem;
         ++size_;
@@ -143,6 +147,7 @@ public:
 
         Iterator& operator+=(difference_type n) {
             ptr_ += n;
+            return *this;
         }
 
         Iterator operator+(difference_type n) {
@@ -163,6 +168,7 @@ public:
 
         Iterator& operator-=(difference_type n) {
             ptr_ -= n;
+            return *this;
         }
 
         Iterator operator-(difference_type n) {
@@ -185,27 +191,27 @@ public:
             return ptr_ - rhv.ptr_;
         }
 
-        bool operator<(const Iterator& rhv) {
+        bool operator<(const Iterator& rhv) const {
             return *this - rhv > 0;
         }
 
-        bool operator>(const Iterator& rhv) {
+        bool operator>(const Iterator& rhv) const {
             return rhv < *this;
         }
 
-        bool operator>=(const Iterator& rhv) {
+        bool operator>=(const Iterator& rhv) const {
             return !(*this < rhv);
         }
 
-        bool operator<=(const Iterator& rhv) {
+        bool operator<=(const Iterator& rhv) const {
             return !(*this > rhv);
         }
 
-        bool operator==(const Iterator& rhv) {
+        bool operator==(const Iterator& rhv) const {
             return ptr_ == rhv.ptr_;
         }
 
-        bool operator!=(const Iterator& rhv) {
+        bool operator!=(const Iterator& rhv) const {
             return !(*this == rhv);
         }
 
