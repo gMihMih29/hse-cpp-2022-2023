@@ -133,25 +133,25 @@ public:
 
     class Iterator {
     public:
-        using iterator_category = std::random_access_iterator_tag;
-        using value_type = T;
-        using difference_type = int;
-        using pointer = T*;
-        using reference = T&;
+        using IteratorCategory = std::random_access_iterator_tag;
+        using ValueType = T;
+        using DifferenceType = int;
+        using Pointer = T*;
+        using Reference = T&;
 
     public:
         Iterator() : ptr_(nullptr) {
         }
 
-        Iterator(pointer ptr) : ptr_(ptr) {
+        explicit Iterator(Pointer ptr) : ptr_(ptr) {  // NOLINT
         }
 
-        Iterator& operator+=(difference_type n) {
+        Iterator& operator+=(DifferenceType n) {
             ptr_ += n;
             return *this;
         }
 
-        Iterator operator+(difference_type n) {
+        Iterator operator+(DifferenceType n) {
             Iterator res(ptr_);
             return res += n;
         }
@@ -167,12 +167,12 @@ public:
             return copy;
         }
 
-        Iterator& operator-=(difference_type n) {
+        Iterator& operator-=(DifferenceType n) {
             ptr_ -= n;
             return *this;
         }
 
-        Iterator operator-(difference_type n) {
+        Iterator operator-(DifferenceType n) {
             Iterator res(ptr_);
             return res -= n;
         }
@@ -188,7 +188,7 @@ public:
             return copy;
         }
 
-        difference_type operator-(const Iterator& rhv) {
+        DifferenceType operator-(const Iterator& rhv) {
             return ptr_ - rhv.ptr_;
         }
 
@@ -216,16 +216,16 @@ public:
             return !(*this == rhv);
         }
 
-        reference operator*() {
+        Reference operator*() {
             return *ptr_;
         }
 
-        pointer operator->() {
+        Pointer operator->() {
             return ptr_;
         }
 
     private:
-        pointer ptr_;
+        Pointer ptr_;
     };
 
     Iterator Begin() {
