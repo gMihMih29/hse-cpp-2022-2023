@@ -36,6 +36,3 @@ public:
 private:
     std::unique_ptr<Reader> reader_;
 };
-
-
-
