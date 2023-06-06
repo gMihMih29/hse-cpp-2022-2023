@@ -30,6 +30,7 @@ HexDecodingReader::HexDecodingReader(std::unique_ptr<Reader> reader) {
 
 size_t HexDecodingReader::Read(char* buf, size_t len) {
     const int hex_base = 16;
+    const int base = 10;
     const size_t symbol_length = 2;
     char cur_symb[symbol_length];
     size_t pos = 0;
@@ -39,12 +40,12 @@ size_t HexDecodingReader::Read(char* buf, size_t len) {
         if ('0' <= cur_symb[0] && cur_symb[0] <= '9') {
             first_digit = cur_symb[0] - '0';
         } else {
-            first_digit = cur_symb[0] - 'a' + 10;
+            first_digit = cur_symb[0] - 'a' + base;
         }
         if ('0' <= cur_symb[1] && cur_symb[1] <= '9') {
             second_digit = cur_symb[1] - '0';
         } else {
-            second_digit = cur_symb[1] - 'a' + 10;
+            second_digit = cur_symb[1] - 'a' + base;
         }
         buf[pos++] = static_cast<char>(first_digit * hex_base + second_digit);
         len -= 2;
