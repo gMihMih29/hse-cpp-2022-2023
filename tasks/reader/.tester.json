@@ -1,5 +1,5 @@
 {
-    "allow_change": "readers_util.h",
+    "allow_change": "readers_util.cpp",
     "tests": "test_reader",
     "solutions": "private"
 }

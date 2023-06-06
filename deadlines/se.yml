@@ -6,8 +6,8 @@
       score: 100
     - task: dedup
       score: 100
-#    - task: reader
-#      score: 100
+    - task: reader
+      score: 100
     - task: vector
       score: 150
 

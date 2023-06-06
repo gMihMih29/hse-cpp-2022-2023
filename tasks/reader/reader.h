@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string>
-#include <algorithm>
-
 #include <unistd.h>
+
+#include <algorithm>
+#include <string>
 
 class Reader {
 public:
@@ -18,3 +18,25 @@ public:
     virtual size_t Read(char* buf, size_t len) = 0;
 };
 
+std::string ReadAll(Reader* in);
+
+class StringReader : public Reader {
+public:
+    StringReader(const std::string& data);
+
+    virtual size_t Read(char* buf, size_t len) override;
+
+private:
+    std::string data_;
+    size_t pos_ = 0;
+};
+
+class FdReader : public Reader {
+public:
+    FdReader(int fd);
+
+    virtual size_t Read(char* buf, size_t len) override;
+
+private:
+    int fd_;
+};
