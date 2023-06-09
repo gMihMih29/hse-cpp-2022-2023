@@ -1,3 +1,29 @@
+- group: 02-homework-big-two
+  start: 08-06-2023 11:00
+  deadline: 22-06-2023 23:59
+  tasks:
+    - task: enumerate
+      score: 50
+    - task: reversed
+      score: 50
+    - task: list
+      score: 100
+    - task: smart-ptr
+      score: 100
+    - task: unordered_set
+      score: 100
+
+
+- group: 08-homework-eight
+  start: 06-06-2023 20:00
+  deadline: 19-06-2023 23:59
+  tasks:
+    - task: itertools
+      score: 100
+    - task: any
+      score: 100
+
+
 - group: 07-homework-seven
   start: 30-05-2023 20:00
   deadline: 11-06-2023 23:59

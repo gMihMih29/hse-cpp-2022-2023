@@ -91,6 +91,9 @@ add_subdirectory(tasks/itertools)
 add_subdirectory(tasks/any)
 
 
-#homework 2
-#add_subdirectory(tasks/list)
-#add_subdirectory(tasks/smart-ptr)
+# homework 2
+add_subdirectory(tasks/enumerate)
+add_subdirectory(tasks/reversed)
+add_subdirectory(tasks/list)
+add_subdirectory(tasks/smart-ptr)
+add_subdirectory(tasks/unordered_set)
