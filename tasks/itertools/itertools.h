@@ -87,6 +87,7 @@ public:
     bool operator!=(const ElemIterator& other) const {
         return pos_ < other.pos_;
     }
+
 private:
     T value_;
     size_t pos_;
@@ -129,18 +130,10 @@ private:
     Iterator end_;
 };
 
-IteratorRange<RangeIterator> Range(size_t end) {
-    return IteratorRange(RangeIterator(0, 1), RangeIterator(end, 1));
-}
+IteratorRange<RangeIterator> Range(size_t end);
 
-IteratorRange<RangeIterator> Range(size_t begin, size_t end) {
-    return IteratorRange(RangeIterator(begin, 1), RangeIterator(end, 1));
-}
-
-IteratorRange<RangeIterator> Range(size_t begin, size_t end, size_t step) {
-    return IteratorRange(RangeIterator(begin, step), RangeIterator(end, step));
-}
-
+IteratorRange<RangeIterator> Range(size_t begin, size_t end);
+IteratorRange<RangeIterator> Range(size_t begin, size_t end, size_t step);
 template <class IterableFirst, class IterableSecond>
 auto Zip(const IterableFirst& cf, const IterableSecond& cu) {
     return IteratorRange(ZipIterator(cf.begin(), cu.begin()), ZipIterator(cf.end(), cu.end()));
