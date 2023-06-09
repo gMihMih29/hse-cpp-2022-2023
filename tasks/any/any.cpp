@@ -6,7 +6,7 @@ void Any::Swap(Any& rhv) {
     std::swap(value_ptr_, rhv.value_ptr_);
 }
 
-Any::Any(const Any& rhs) : value_ptr_(rhs.value_ptr_->Clone()){
+Any::Any(const Any& rhs) : value_ptr_(rhs.value_ptr_->Clone()) {
 }
 
 Any& Any::operator=(Any rhs) {

@@ -4,10 +4,11 @@
 
 class Any {
 public:
-    struct InnerBase{
+    struct InnerBase {
         using ptr = std::unique_ptr<InnerBase>;
         virtual InnerBase* Clone() const = 0;
-        virtual ~InnerBase() {}
+        virtual ~InnerBase() {
+        }
     };
 
     template <class T>
