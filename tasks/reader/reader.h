@@ -22,9 +22,9 @@ std::string ReadAll(Reader* in);
 
 class StringReader : public Reader {
 public:
-    StringReader(const std::string& data);
+    explicit StringReader(const std::string& data);
 
-    virtual size_t Read(char* buf, size_t len) override;
+    size_t Read(char* buf, size_t len) override;
 
 private:
     std::string data_;
@@ -33,9 +33,9 @@ private:
 
 class FdReader : public Reader {
 public:
-    FdReader(int fd);
+    explicit FdReader(int fd);
 
-    virtual size_t Read(char* buf, size_t len) override;
+    size_t Read(char* buf, size_t len) override;
 
 private:
     int fd_;
