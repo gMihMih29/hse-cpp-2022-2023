@@ -5,7 +5,7 @@
 class Any {
 public:
     struct InnerBase {
-        using ptr = std::unique_ptr<InnerBase>;
+        using Ptr = std::unique_ptr<InnerBase>;
         virtual InnerBase* Clone() const = 0;
         virtual ~InnerBase() {
         }
@@ -13,7 +13,7 @@ public:
 
     template <class T>
     struct Inner : public InnerBase {
-        Inner(T value) : value_(value) {
+        explicit Inner(T value) : value_(value) {
         }
 
         InnerBase* Clone() const override {
@@ -53,5 +53,5 @@ public:
     }
 
 private:
-    typename InnerBase::ptr value_ptr_;
+    typename InnerBase::Ptr value_ptr_;
 };
