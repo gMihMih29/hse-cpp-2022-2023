@@ -109,13 +109,15 @@ public:
 
     auto operator*() const {
         size_t cnt = 0;
-        for (Iterator i = pos_; i != end_ && *i == *pos_; ++i, ++cnt);
+        for (Iterator i = pos_; i != end_ && *i == *pos_; ++i, ++cnt) {
+        }
         return IteratorRange(ElemIterator(*pos_, 0), ElemIterator(*pos_, cnt));
     }
 
     GroupIterator& operator++() {
         Iterator i = pos_;
-        for (; i != end_ && *i == *pos_; ++i);
+        for (; i != end_ && *i == *pos_; ++i) {
+        }
         pos_ = i;
         return *this;
     }
