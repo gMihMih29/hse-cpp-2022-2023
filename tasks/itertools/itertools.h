@@ -130,10 +130,9 @@ private:
     Iterator end_;
 };
 
-IteratorRange<RangeIterator> Range(size_t end);
-
-IteratorRange<RangeIterator> Range(size_t begin, size_t end);
-IteratorRange<RangeIterator> Range(size_t begin, size_t end, size_t step);
+inline IteratorRange<RangeIterator> Range(size_t end);
+inline IteratorRange<RangeIterator> Range(size_t begin, size_t end);
+inline IteratorRange<RangeIterator> Range(size_t begin, size_t end, size_t step);
 template <class IterableFirst, class IterableSecond>
 auto Zip(const IterableFirst& cf, const IterableSecond& cu) {
     return IteratorRange(ZipIterator(cf.begin(), cu.begin()), ZipIterator(cf.end(), cu.end()));
