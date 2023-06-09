@@ -31,7 +31,7 @@ public:
         return *this;
     }
 
-    size_t operator*() {
+    size_t operator*() const {
         return value_;
     }
 
@@ -56,11 +56,11 @@ public:
         return *this;
     }
 
-    const auto operator*() {
+    const auto operator*() const {
         return std::make_pair(*current_first_, *current_second_);
     }
 
-    bool operator!=(const ZipIterator& other) {
+    bool operator!=(const ZipIterator& other) const {
         return current_first_ != other.current_first_ && current_second_ != other.current_second_;
     }
 
@@ -80,7 +80,7 @@ public:
         return *this;
     }
 
-    T operator*() {
+    T operator*() const {
         return value_;
     }
 
