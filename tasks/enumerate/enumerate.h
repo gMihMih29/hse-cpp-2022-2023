@@ -26,7 +26,7 @@ class EnumerateIterator {
 public:
     using Reference = typename std::iterator_traits<Iterator>::reference;
 
-    EnumerateIterator(Iterator current) : it_(current), index_(0) {
+    explicit EnumerateIterator(Iterator current) : it_(current), index_(0) {
     }
 
     EnumerateIterator& operator++() {
