@@ -24,7 +24,7 @@ private:
 template <class Iterator>
 class EnumerateIterator {
 public:
-    using Reference = std::iterator_traits<Iterator>::reference;
+    using Reference = typename std::iterator_traits<Iterator>::reference;
 
     EnumerateIterator(Iterator current) : it_(current), index_(0) {
     }
