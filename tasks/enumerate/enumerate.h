@@ -28,7 +28,7 @@ public:
 
     EnumerateIterator(Iterator current) : it_(current), index_(0) {
     }
-    
+
     EnumerateIterator& operator++() {
         ++it_;
         ++index_;
