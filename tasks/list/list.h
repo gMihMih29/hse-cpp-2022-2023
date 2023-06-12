@@ -12,6 +12,12 @@ public:
         friend class Iterator;
 
     public:
+        ListNode() {
+            value_ptr_ = nullptr;
+            next_ = this;
+            prev_ = this;
+        }
+
         explicit ListNode(T* value_ptr) : value_ptr_(value_ptr), next_(nullptr), prev_(nullptr) {
         }
 
@@ -21,13 +27,6 @@ public:
 
         ~ListNode() {
             delete value_ptr_;
-        }
-
-    private:
-        ListNode(std::nullptr_t, int) {
-            value_ptr_ = nullptr;
-            next_ = this;
-            prev_ = this;
         }
 
     private:
@@ -106,13 +105,9 @@ private:
         target->prev_ = after;
     }
 
-    void Swap(List& lhv, List& rhv) {
-        std::swap(lhv.linkage_, rhv.linkage_);
-    }
-
 public:
     List() : linkage_(nullptr) {
-        linkage_ = new ListNode(nullptr, 0);
+        linkage_ = new ListNode();
     }
 
     List(const List& other) : List() {
@@ -205,6 +200,10 @@ public:
 
     void PopFront() {
         UnLink(linkage_->next_);
+    }
+
+    void Swap(List& lhv, List& rhv) {
+        std::swap(lhv.linkage_, rhv.linkage_);
     }
 
     Iterator Begin() {
