@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <utility>
 
 template <typename T>
@@ -11,7 +12,7 @@ public:
         friend class Iterator;
 
     public:
-        ListNode(T* value_ptr) : value_ptr_(value_ptr), next_(nullptr), prev_(nullptr) {
+        explicit ListNode(T* value_ptr) : value_ptr_(value_ptr), next_(nullptr), prev_(nullptr) {
         }
 
         T& GetValue() {
@@ -37,7 +38,7 @@ public:
 
     class Iterator {
     public:
-        Iterator(ListNode* ptr) : ptr_(ptr) {
+        explicit Iterator(ListNode* ptr) : ptr_(ptr) {
         }
 
         Iterator& operator++() {
@@ -240,11 +241,11 @@ public:
 };
 
 template <typename T>
-typename List<T>::Iterator begin(List<T>& list) {
+typename List<T>::Iterator begin(List<T>& list) {  // NOLINT
     return list.Begin();
 }
 
 template <typename T>
-typename List<T>::Iterator end(List<T>& list) {
+typename List<T>::Iterator end(List<T>& list) {  // NOLINT
     return list.End();
 }
