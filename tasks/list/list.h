@@ -149,8 +149,8 @@ public:
         return linkage_->prev_ == linkage_ && linkage_->next_ == linkage_;
     }
 
-    size_t Size() const {
-        size_t size = 0;
+    std::size_t Size() const {
+        std::size_t size = 0;
         ListNode* current = linkage_->next_;
         while (current != linkage_) {
             ++size;
