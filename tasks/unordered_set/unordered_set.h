@@ -1,7 +1,7 @@
 #pragma once
 
-#include <iterator>
 #include <functional>
+#include <iterator>
 #include <list>
 #include <utility>
 #include <vector>
@@ -33,7 +33,7 @@ public:
             data_[i] = other.data_[i];
         }
     }
-    
+
     UnorderedSet(UnorderedSet&& other) {
         n_elements_ = std::move(other.n_elements_);
         data_ = std::move(other.data_);
@@ -99,7 +99,7 @@ public:
         }
         data_ = std::move(tmp);
     }
-    
+
     void Reserve(size_t new_bucket_count) {
         if (data_.size() >= new_bucket_count) {
             return;
