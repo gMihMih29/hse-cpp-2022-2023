@@ -102,6 +102,13 @@ public:
         ctrl_block_->AddWeakPtr();
     }
 
+    WeakPtr(const WeakPtr& rhs) : ctrl_block_(rhs.ctrl_block_) {
+    }
+
+    WeakPtr(WeakPtr&& rhs) : ctrl_block_(rhs.ctrl_block_) {
+        rhs.ctrl_block_ = nullptr;
+    }
+
     ~WeakPtr() {
         if (ctrl_block_) {
             ctrl_block_->RemoveWeakPtr();
@@ -109,6 +116,29 @@ public:
                 delete ctrl_block_;
             }
         }
+    }
+
+    WeakPtr& operator=(const WeakPtr& rhs) {
+        if (ctrl_block_) {
+            ctrl_block_->RemoveWeakPtr();
+            if (ctrl_block_->IsExpired()) {
+                delete ctrl_block_;
+            }
+        }
+        ctrl_block_ = rhs.ctrl_block_;
+        return *this;
+    }
+
+    WeakPtr& operator=(WeakPtr&& rhs) {
+        if (ctrl_block_) {
+            ctrl_block_->RemoveWeakPtr();
+            if (ctrl_block_->IsExpired()) {
+                delete ctrl_block_;
+            }
+        }
+        ctrl_block_ = rhs.ctrl_block_;
+        ctrl_block_ = nullptr;
+        return *this;
     }
 
     SharedPtr<T> Lock() {
