@@ -18,11 +18,11 @@ public:
     SharedPtr() : ptr_(nullptr), ctrl_block_(new ControlBlock<T>()) {
     }
 
-    explicit SharedPtr(const SharedPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
+    SharedPtr(const SharedPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
         ctrl_block_->AddSharedPtr();
     }
 
-    SharedPtr(const WeakPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
+    explicit SharedPtr(const WeakPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
         ctrl_block_->AddSharedPtr();
     }
 
