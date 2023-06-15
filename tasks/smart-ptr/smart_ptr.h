@@ -112,6 +112,7 @@ public:
     bool IsExpired() const {
         return !ctrl_block_ || !ctrl_block_->Get();
     }
+
 private:
     ControlBlock<T>* ctrl_block_;
 };
@@ -159,7 +160,7 @@ public:
     T* Get() {
         return ptr_;
     }
-    
+
     bool IsExpired() {
         return cnt_shared_ == 0 && cnt_weak_ == 0;
     }
