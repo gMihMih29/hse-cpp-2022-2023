@@ -102,6 +102,12 @@ public:
         ctrl_block_->AddWeakPtr();
     }
 
+    ~WeakPtr() {
+        if (ctrl_block_) {
+            ctrl_block_->RemoveWeakPtr();
+        }
+    }
+
     SharedPtr<T> Lock() {
         if (!ctrl_block_ || IsExpired()) {
             return SharedPtr<T>();
