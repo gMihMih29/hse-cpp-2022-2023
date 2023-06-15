@@ -105,6 +105,9 @@ public:
     ~WeakPtr() {
         if (ctrl_block_) {
             ctrl_block_->RemoveWeakPtr();
+            if (ctrl_block_->IsExpired()) {
+                delete ctrl_block_;
+            }
         }
     }
 
