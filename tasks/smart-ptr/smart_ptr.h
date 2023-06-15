@@ -18,19 +18,19 @@ public:
     SharedPtr() : ptr_(nullptr), ctrl_block_(new ControlBlock<T>()) {
     }
 
-    SharedPtr(const SharedPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
+    explicit SharedPtr(const SharedPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
         ctrl_block_->AddSharedPtr();
     }
 
-    SharedPtr(const WeakPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
+    explicit SharedPtr(const WeakPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
         ctrl_block_->AddSharedPtr();
     }
 
-    SharedPtr(ControlBlock<T>* ctrl) : ptr_(ctrl->Get()), ctrl_block_(ctrl) {
+    explicit SharedPtr(ControlBlock<T>* ctrl) : ptr_(ctrl->Get()), ctrl_block_(ctrl) {
         ctrl_block_->AddSharedPtr();
     }
 
-    SharedPtr(T* ptr) : ptr_(ptr) {
+    explicit SharedPtr(T* ptr) : ptr_(ptr) {
         ctrl_block_ = new ControlBlock<T>(*this);
     }
 
@@ -98,7 +98,7 @@ public:
     WeakPtr() : ctrl_block_(nullptr) {
     }
 
-    WeakPtr(const SharedPtr<T>& rhs) : ctrl_block_(rhs.ctrl_block_) {
+    explicit WeakPtr(const SharedPtr<T>& rhs) : ctrl_block_(rhs.ctrl_block_) {
         ctrl_block_->AddWeakPtr();
     }
 
@@ -123,10 +123,10 @@ public:
     ControlBlock() : ptr_(nullptr), cnt_shared_(1), cnt_weak_(0) {
     }
 
-    ControlBlock(const SharedPtr<T>& ptr) : ptr_(ptr.ptr_), cnt_shared_(1), cnt_weak_(0) {
+    explicit ControlBlock(const SharedPtr<T>& ptr) : ptr_(ptr.ptr_), cnt_shared_(1), cnt_weak_(0) {
     }
 
-    ControlBlock(const WeakPtr<T>& ptr) : ptr_(ptr.ptr_), cnt_shared_(0), cnt_weak_(1) {
+    explicit ControlBlock(const WeakPtr<T>& ptr) : ptr_(ptr.ptr_), cnt_shared_(0), cnt_weak_(1) {
     }
 
     ~ControlBlock() {
