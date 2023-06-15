@@ -91,7 +91,7 @@ public:
     }
 
     bool Find(const KeyT& key) const {
-        if (data_.size() == 0) {
+        if (data_.empty()) {
             return false;
         }
         for (const KeyT& elem : data_[std::hash<KeyT>{}(key) % data_.size()]) {
