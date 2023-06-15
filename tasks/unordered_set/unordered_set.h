@@ -21,7 +21,7 @@ public:
                   std::forward_iterator_tag, typename std::iterator_traits<IteratorType>::iterator_category>>>
     UnorderedSet(IteratorType first, IteratorType last) : UnorderedSet(std::distance(first, last)) {
         while (first != last) {
-            data_[std::hash(*first)].push_back(*first);
+            data_[std::hash<KeyT>(*first)].push_back(*first);
             ++first;
         }
     }
@@ -70,7 +70,7 @@ public:
             Reserve(2 * n_elements_);
         }
         ++n_elements_;
-        data_[std::hash(key) % data_.size()].push_back(key);
+        data_[std::hash<KeyT>(key) % data_.size()].push_back(key);
     }
 
     void Insert(KeyT&& key) {
@@ -78,15 +78,15 @@ public:
             Reserve(2 * n_elements_);
         }
         ++n_elements_;
-        data_[std::hash(key) % data_.size()].emplace_back(key);
+        data_[std::hash<KeyT>(key) % data_.size()].emplace_back(key);
     }
 
     void Erase(const KeyT& key) {
-        data_[std::hash(key) % data_.size()].clear();
+        data_[std::hash<KeyT>(key) % data_.size()].clear();
     }
 
     bool Find(const KeyT& key) const {
-        return !data_[std::hash(key) % data_.size()].empty();
+        return !data_[std::hash<KeyT>(key) % data_.size()].empty();
     }
 
     void Rehash(size_t new_bucket_count) {
@@ -95,7 +95,7 @@ public:
         }
         std::vector<std::list<KeyT>> tmp(new_bucket_count);
         for (const KeyT& elem : data_) {
-            tmp[std::hash(elem) % new_bucket_count] = elem;
+            tmp[std::hash<KeyT>(elem) % new_bucket_count] = elem;
         }
         data_ = std::move(tmp);
     }
@@ -120,7 +120,7 @@ public:
     }
 
     size_t Bucket(const KeyT& key) const {
-        return std::hash(key) % data_.size();
+        return std::hash<KeyT>(key) % data_.size();
     }
 
     double LoadFactor() const {
