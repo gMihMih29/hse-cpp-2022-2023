@@ -22,7 +22,7 @@ public:
         ctrl_block_->AddSharedPtr();
     }
 
-    explicit SharedPtr(const WeakPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
+    SharedPtr(const WeakPtr<T>& rhs) : ptr_(rhs.ctrl_block_->Get()), ctrl_block_(rhs.ctrl_block_) {
         ctrl_block_->AddSharedPtr();
     }
 
