@@ -21,10 +21,10 @@ public:
               typename = std::enable_if_t<std::is_base_of_v<
                   std::forward_iterator_tag, typename std::iterator_traits<IteratorType>::iterator_category>>>
     UnorderedSet(IteratorType first, IteratorType last) : UnorderedSet(std::distance(first, last)) {
-        n_elements_ = std::distance(first, last);
         while (first != last) {
-            data_[std::hash<KeyT>{}(*first)].push_back(*first);
+            data_[Bucket(*first)].push_back(*first);
             ++first;
+            ++n_elements_;
         }
     }
 
@@ -74,7 +74,7 @@ public:
             Rehash(2 * n_elements_);
         }
         ++n_elements_;
-        data_[std::hash<KeyT>{}(key) % data_.size()].push_back(key);
+        data_[Bucket(key)].push_back(key);
     }
 
     void Insert(KeyT&& key) {
@@ -82,19 +82,28 @@ public:
             Rehash(2 * n_elements_);
         }
         ++n_elements_;
-        data_[std::hash<KeyT>{}(key) % data_.size()].emplace_back(key);
+        data_[Bucket(key)].emplace_back(key);
     }
 
     void Erase(const KeyT& key) {
-        n_elements_ -= data_[std::hash<KeyT>{}(key) % data_.size()].size();
-        data_[std::hash<KeyT>{}(key) % data_.size()].clear();
+        auto it_to_delete = data_[Bucket(key)].begin();
+        for (const KeyT& elem : data_[Bucket(key)]) {
+            if (elem == key) {
+                break;
+            }
+            ++it_to_delete;
+        }
+        if (it_to_delete != data_[Bucket(key)].end()) {
+            data_[Bucket(key)].erase(it_to_delete);
+            --n_elements_;
+        }
     }
 
     bool Find(const KeyT& key) const {
         if (data_.empty()) {
             return false;
         }
-        for (const KeyT& elem : data_[std::hash<KeyT>{}(key) % data_.size()]) {
+        for (const KeyT& elem : data_[Bucket(key)]) {
             if (elem == key) {
                 return true;
             }
@@ -105,6 +114,9 @@ public:
     void Rehash(size_t new_bucket_count) {
         if (new_bucket_count == 0) {
             new_bucket_count = 1;
+        }
+        if (data_.size() == new_bucket_count) {
+            return;
         }
         if (new_bucket_count < Size()) {
             new_bucket_count = BucketCount();
@@ -119,17 +131,10 @@ public:
     }
 
     void Reserve(size_t new_bucket_count) {
-        if (new_bucket_count == 0) {
-            new_bucket_count = 1;
-        }
         if (data_.size() >= new_bucket_count) {
             return;
         }
-        std::vector<std::list<KeyT>> tmp(new_bucket_count);
-        for (size_t i = 0; i < data_.size(); ++i) {
-            tmp[i] = data_[i];
-        }
-        data_ = std::move(tmp);
+        Rehash(new_bucket_count);
     }
 
     size_t BucketCount() const {
